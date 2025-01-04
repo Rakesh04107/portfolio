@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BlogCard from "./BlogCard";
-import { Container, Row, Col } from "react-bootstrap";
+import {  Row, Col } from "react-bootstrap";
 
 
 // Fetch blog data from JSON
@@ -20,17 +20,12 @@ function fetchBlogData(url) {
 
 function BlogHome({theme}) {
   const [blogs, setBlogs] = useState([]);
-  const [topics, setTopics] = useState([]);
 
   // Load blog data and topics
   useEffect(() => {
     const loadBlogs = async () => {
       const data = await fetchBlogData("/blogs.json");
       setBlogs(data);
-
-      // Extract unique topics
-      const allTopics = new Set(data.map((blog) => blog.data.Topic));
-      setTopics([...allTopics]);
     };
 
     loadBlogs();

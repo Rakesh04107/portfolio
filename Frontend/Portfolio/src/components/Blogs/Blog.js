@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import BlogHome from "./BlogHome";
 import BlogNavbar from "./BlogNavbar";
 
 function Blog() {
-  const counter = useSelector((state) => state.counter.value);
+  // const counter = useSelector((state) => state.counter.value);
   const [theme, setTheme] = useState("light");
    // Apply theme to body
   useEffect(() => {
