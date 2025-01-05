@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "../../context/ThemeContext"; // Import useTheme hook
 
-function BlogNavbar({ theme, toggleTheme }) {
+function BlogNavbar() {
   const [isSignedIn, setIsSignedIn] = useState(false); // For sign-in/sign-out state
   const [navColour, updateNavbar] = useState(false); // For sticky navbar
-  const navigate = useNavigate();
+  const { theme, setTheme } = useTheme(); // Use theme from context
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light"); // Toggle theme
+  };
 
   const handleSignInSignOut = () => {
     setIsSignedIn(!isSignedIn);
-  };
-
-  const handleDropdownSelect = (value) => {
-    navigate(`/topic/${value}`);
   };
 
   const scrollHandler = () => {
@@ -30,13 +30,18 @@ function BlogNavbar({ theme, toggleTheme }) {
   };
 
   // Add event listener for scroll
-  window.addEventListener("scroll", scrollHandler);
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+    return () => {
+      window.removeEventListener("scroll", scrollHandler); // Clean up on unmount
+    };
+  }, []);
 
   return (
     <Navbar
       fixed="top"
       expand="md"
-      className={navColour ? "sticky" : "navbar"}
+      className={`${navColour ? "sticky" : "navbar"} ${theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}`} // Apply theme classes
     >
       <Container>
         {/* Home Icon */}
@@ -44,23 +49,11 @@ function BlogNavbar({ theme, toggleTheme }) {
           <AiOutlineHome style={{ fontSize: "1.5em", cursor: "pointer" }} />
         </Navbar.Brand>
 
-        {/* Dropdown Filter */}
-        <Dropdown onSelect={handleDropdownSelect}>
-          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-            Filter
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item eventKey="val1">Val1</Dropdown.Item>
-            <Dropdown.Item eventKey="val2">Val2</Dropdown.Item>
-            <Dropdown.Item eventKey="val3">Val3</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-
         {/* Right-Aligned Options */}
         <Nav className="ms-auto">
           {/* Theme Toggle */}
           <Button variant="outline-secondary" onClick={toggleTheme}>
-            {theme === "light" ? <FaMoon /> : <FaSun />}
+            {theme === "light" ? <FaMoon /> : <FaSun />} {/* Toggle icon */}
           </Button>
 
           {/* SignIn/SignOut Button */}

@@ -9,7 +9,7 @@ function Home() {
   return (
     <section>
       <Container fluid className="home-section" id="home">
-        <ParticleBackground />
+        {/* <ParticleBackground /> */}
         <Container className="home-content" style={{position:"relative"}}>
           <Row>
             <Col md={7} className="home-header">
