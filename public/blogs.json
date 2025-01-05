@@ -1,0 +1,30 @@
+[
+    {
+      "id": "1001",
+      "title": "Understanding Git and GitHub",
+      "author": "Soumyajit",
+      "tags": ["Git", "GitHub", "Version Control"],
+      "abstract": "A guide to understanding the difference between Git and GitHub, with examples and use cases for developers.",
+      "headerImage": "/BL-1001/header.jpg",
+      "isPublished": true
+    },
+    {
+      "id": "1002",
+      "title": "Learning Docker Basics",
+      "author": "Anurag Ranjan",
+      "tags": ["Docker", "Containers", "DevOps"],
+      "abstract": "An introduction to Docker and containerization, covering its fundamental concepts and practical applications.",
+      "headerImage": "/BL-1002/header.jpg",
+      "isPublished": true
+    },
+    {
+      "id": "1003",
+      "title": "Introduction to Kubernetes",
+      "author": "Aditi Sharma",
+      "tags": ["Kubernetes", "Orchestration", "Cloud"],
+      "abstract": "Exploring Kubernetes as a container orchestration platform and understanding its architecture and use cases.",
+      "headerImage": "/BL-1003/header.jpg",
+      "isPublished": true
+    }
+  ]
+  
