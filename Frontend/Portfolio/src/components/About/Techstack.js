@@ -9,7 +9,6 @@ import {
 import { FaAws } from "react-icons/fa";
 import {
   SiKubernetes,
-  SiTerraform,
   SiPrometheus,
   SiGrafana,
   SiMysql,

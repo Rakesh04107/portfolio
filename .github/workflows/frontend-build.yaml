@@ -3,7 +3,7 @@ name: Build and Deploy React App with CloudFront
 on:
   push:
     branches:
-      - dev  # Run this workflow on pushes to the main branch.
+      - main  # Run this workflow on pushes to the main branch.
 
 env:
   BUCKET_NAME: "test-1md3nd-cloudfront-s3-bucket-1"
@@ -46,7 +46,7 @@ jobs:
       # Upload the build files to S3
       - name: Deploy to S3
         run: |
-          cd pure-react-frontend
+          cd Frontend/Portfolio
           aws s3 sync ./build s3://${{ env.BUCKET_NAME }} --delete
 
       # Invalidate CloudFront cache

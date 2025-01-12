@@ -1,80 +1,55 @@
 import React, { useState, useEffect } from "react";
 import BlogCard from "./BlogCard";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col, Container, Spinner, Alert } from "react-bootstrap";
 
-
-// Fetch blog data from JSON
-function fetchBlogData(url) {
-  return fetch(url)
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("Failed to fetch blogs");
-      }
-      return res.json();
-    })
-    .catch((error) => {
-      console.error(error);
-      return [];
-    });
-}
-
-function BlogHome({theme}) {
+function BlogHome() {
   const [blogs, setBlogs] = useState([]);
-  const [topics, setTopics] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Load blog data and topics
   useEffect(() => {
-    const loadBlogs = async () => {
-      const data = await fetchBlogData("/blogs.json");
-      setBlogs(data);
-
-      // Extract unique topics
-      const allTopics = new Set(data.map((blog) => blog.data.Topic));
-      setTopics([...allTopics]);
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch(
+          "https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/dev/public/blogs.json"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch blogs");
+        }
+        const data = await response.json();
+        setBlogs(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    loadBlogs();
+    fetchBlogs();
   }, []);
 
-  // Handle like functionality
-  const handleLike = (id) => {
-    setBlogs((prevBlogs) =>
-      prevBlogs.map((blog) =>
-        blog.data.Id === id
-          ? { ...blog, likes: blog.likes + 1 } // Increment like count
-          : blog
-      )
-    );
-  };
-
-  // Handle delete functionality
-  const handleDelete = (id) => {
-    setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.data.Id !== id));
-  };
-
   return (
-    <>
-      <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-      {blogs.length === 0 ? (
-        <p>No blogs available.</p> // Handle empty blogs state
+    <Container className="blog-section">
+      <h1 className="my-4 text-center">Blog Home</h1>
+      {loading ? (
+        <div className="d-flex justify-content-center">
+          <Spinner animation="border" />
+        </div>
+      ) : error ? (
+        <Alert variant="danger">{error}</Alert>
+      ) : blogs.length === 0 ? (
+        <p className="text-center">No blogs available.</p>
       ) : (
-        blogs.map((blog) => (
-          <Col md={4} className="blog-card" key={blog.data.Id}>
-            <BlogCard
-              key={blog.data.Id}
-              blog={blog}
-              theme={theme}
-              onLike={handleLike}
-              onDelete={handleDelete}   
-            />
-          </Col>
-        ))
+        <Row className="justify-content-center">
+          {blogs.map((blog) => (
+            <Col md={4} key={blog.id} className="mb-4">
+              <BlogCard blog={blog} />
+            </Col>
+          ))}
+        </Row>
       )}
-      </Row>
-
-    </>
+    </Container>
   );
 }
-
 
 export default BlogHome;

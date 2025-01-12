@@ -1,31 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useTheme } from "../../context/ThemeContext"; // Import useTheme hook
 import BlogHome from "./BlogHome";
-import BlogNavbar from "./BlogNavbar";
 
 function Blog() {
-  const counter = useSelector((state) => state.counter.value);
-  const [theme, setTheme] = useState("light");
-   // Apply theme to body
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
-
-  const handleToggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const { theme } = useTheme(); // Get the current theme from context
 
   return (
     <Container
       fluid
-      className="blog-section">
-      <BlogNavbar theme={theme} toggleTheme={handleToggleTheme} /> 
+      className={`blog-section-${
+        theme === "dark" ? "dark":"light"
+      }`} // Apply background and text color based on the theme
+      style={{minHeight:"100%"}}
+    >
       <Container style={{ position: "relative" }}>
         <h1 className="blog-heading">
           Personal <strong className="purple">Blogs</strong>
         </h1>
-        <BlogHome theme={theme}/>
+        <BlogHome />
       </Container>
     </Container>
   );

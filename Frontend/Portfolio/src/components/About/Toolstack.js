@@ -6,7 +6,6 @@ import {
   SiJenkins,
   SiDocker,
   SiPostman,
-  SiSlack,
 } from "react-icons/si";
 
 function Toolstack() {
