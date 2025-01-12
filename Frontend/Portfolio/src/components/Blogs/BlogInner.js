@@ -1,20 +1,36 @@
 import React from "react";
 import { BsThreeDots } from "react-icons/bs";
 import Toc from "./Toc";
-import { MDXRemote } from "react-mdx-remote";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
-function BlogInner({ data, content, headings }) {
+// Function to extract headings from markdown
+function extractHeadings(markdown) {
+  const lines = markdown.split("\n");
+  const headings = [];
+
+  lines.forEach((line) => {
+    const match = line.match(/^(#{1,6})\s+(.*)/);
+    if (match) {
+      const level = match[1].length;
+      const text = match[2];
+      const id = text.toLowerCase().replace(/\s+/g, "-");
+      headings.push({ level, text, id });
+    }
+  });
+
+  return headings;
+}
+
+function BlogInner({ data, content }) {
+  // Extract headings from markdown content
+  const headings = extractHeadings(content);
+
   return (
     <div className="container mx-auto flex flex-col lg:flex-row justify-between px-6">
       {/* Main Content Section */}
       <div className="lg:w-3/4 rounded-lg shadow-lg bg-white dark:bg-gray-900 pb-8">
-        {/* Header Image */}
-        <img
-          className="object-cover w-full h-72 rounded-t-lg"
-          src={data.HeaderImage || "/default-blog-img.jpg"}
-          alt="Blog Cover"
-        />
-
         {/* Blog Content */}
         <div className="p-6">
           {/* Tags */}
@@ -41,7 +57,11 @@ function BlogInner({ data, content, headings }) {
 
           {/* Blog Body */}
           <article className="prose dark:prose-dark max-w-none py-7 mx-auto">
-            <MDXRemote {...content} />
+            <ReactMarkdown
+              children={content}
+              remarkPlugins={[remarkGfm]} // Enable GitHub-flavored markdown
+              rehypePlugins={[rehypeRaw]} // Enable rendering raw HTML
+            />
           </article>
 
           {/* Author Section */}

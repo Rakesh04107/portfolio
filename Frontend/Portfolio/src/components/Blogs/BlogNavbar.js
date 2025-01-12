@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -10,7 +10,6 @@ import { useTheme } from "../../context/ThemeContext"; // Import useTheme hook
 
 function BlogNavbar() {
   const [isSignedIn, setIsSignedIn] = useState(false); // For sign-in/sign-out state
-  const [navColour, updateNavbar] = useState(false); // For sticky navbar
   const { theme, setTheme } = useTheme(); // Use theme from context
 
   const toggleTheme = () => {
@@ -21,32 +20,16 @@ function BlogNavbar() {
     setIsSignedIn(!isSignedIn);
   };
 
-  const scrollHandler = () => {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
-    }
-  };
-
-  // Add event listener for scroll
-  useEffect(() => {
-    window.addEventListener("scroll", scrollHandler);
-    return () => {
-      window.removeEventListener("scroll", scrollHandler); // Clean up on unmount
-    };
-  }, []);
-
   return (
     <Navbar
       fixed="top"
       expand="md"
-      className={`${navColour ? "sticky" : "navbar"} ${theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}`} // Apply theme classes
     >
       <Container>
         {/* Home Icon */}
         <Navbar.Brand as={Link} to="/" className="d-flex">
-          <AiOutlineHome style={{ fontSize: "1.5em", cursor: "pointer" }} />
+        {theme === "light" ? <AiOutlineHome style={{ fontSize: "1.5em", cursor: "pointer" ,color:"black"}} />  : <AiOutlineHome style={{ fontSize: "1.5em", cursor: "pointer" }} /> } 
+          
         </Navbar.Brand>
 
         {/* Right-Aligned Options */}

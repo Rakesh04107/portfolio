@@ -3,60 +3,60 @@
     "id": "1",
     "title": "Exploring the Future of AI",
     "author": "Jane Doe",
-    "headerImage": "https://via.placeholder.com/600x400?text=AI+Future"
+    "headerImage": "https://picsum.photos/200"
   },
   {
     "id": "2",
     "title": "A Guide to Modern Web Development",
     "author": "John Smith",
-    "headerImage": "https://via.placeholder.com/600x400?text=Web+Development"
+    "headerImage": "https://picsum.photos/200"
   },
   {
     "id": "3",
     "title": "Understanding Blockchain Technology",
     "author": "Alice Johnson",
-    "headerImage": "https://via.placeholder.com/600x400?text=Blockchain"
+    "headerImage": "https://picsum.photos/200"
   },
   {
     "id": "4",
     "title": "The Rise of Remote Work",
     "author": "Bob Brown",
-    "headerImage": "https://via.placeholder.com/600x400?text=Remote+Work"
+    "headerImage": "https://picsum.photos/200"
   },
   {
     "id": "5",
     "title": "Introduction to Quantum Computing",
     "author": "Charlie Davis",
-    "headerImage": "https://via.placeholder.com/600x400?text=Quantum+Computing"
+    "headerImage": "https://picsum.photos/200"
   },
   {
     "id": "6",
     "title": "The Impact of Social Media on Society",
     "author": "Diana Evans",
-    "headerImage": "https://via.placeholder.com/600x400?text=Social+Media"
+    "headerImage": "https://picsum.photos/200"
   },
   {
     "id": "7",
     "title": "Cybersecurity in the Digital Age",
     "author": "Ethan Ford",
-    "headerImage": "https://via.placeholder.com/600x400?text=Cybersecurity"
+    "headerImage": "https://picsum.photos/200"
   },
   {
     "id": "8",
     "title": "The Evolution of E-commerce",
     "author": "Fiona Green",
-    "headerImage": "https://via.placeholder.com/600x400?text=E-commerce"
+    "headerImage": "https://picsum.photos/200"
   },
   {
     "id": "9",
     "title": "Sustainable Energy Solutions",
     "author": "George Harris",
-    "headerImage": "https://via.placeholder.com/600x400?text=Sustainable+Energy"
+    "headerImage": "https://picsum.photos/200"
   },
   {
     "id": "10",
     "title": "The Art of Mindfulness",
     "author": "Hannah Lee",
-    "headerImage": "https://via.placeholder.com/600x400?text=Mindfulness"
+    "headerImage": "https://picsum.photos/200"
   }
 ]

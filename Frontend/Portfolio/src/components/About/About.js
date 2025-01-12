@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import ParticleBackground from "../Particle";
 import Github from "./Github";
 import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
@@ -11,7 +10,6 @@ import Leetcode from "./Leetcode";
 function About() {
   return (
     <Container fluid className="about-section" style={{position:"relative"}}>
-      <ParticleBackground />
       <Container>
         <Row style={{position:"relative", justifyContent: "center", padding: "10px" }}> 
           <Col

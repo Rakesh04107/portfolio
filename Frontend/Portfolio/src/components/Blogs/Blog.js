@@ -9,9 +9,10 @@ function Blog() {
   return (
     <Container
       fluid
-      className={`blog-section ${
-        theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"
+      className={`blog-section-${
+        theme === "dark" ? "dark":"light"
       }`} // Apply background and text color based on the theme
+      style={{minHeight:"100%"}}
     >
       <Container style={{ position: "relative" }}>
         <h1 className="blog-heading">

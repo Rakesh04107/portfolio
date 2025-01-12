@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import ParticleBackground from "../Particle";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 
@@ -20,7 +19,6 @@ function ResumeNew() {
   return (
     <div>
       <Container fluid className="resume-section">
-        <ParticleBackground />
         <Container style={{ position: "relative" }}>
           <Row style={{ justifyContent: "center", position: "relative" }}>
             <Button
