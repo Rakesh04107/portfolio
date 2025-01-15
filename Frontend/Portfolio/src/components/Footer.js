@@ -11,10 +11,14 @@ function Footer() {
   let date = new Date();
   let year = date.getFullYear();
   return (
-    <Container fluid className="footer" style={{position:"fixed",height:"40px"}}>
+    <Container
+      fluid
+      className="footer"
+      style={{ position: "fixed", height: "40px" }}
+    >
       <Row>
         <Col md="4" className="footer-copywright">
-          <h3>Designed and Developed by Anurag Ranjan </ h3>
+          <h3>Designed and Developed by Anurag Ranjan </h3>
         </Col>
         <Col md="4" className="footer-copywright">
           <h3>Copyright © {year} AR</h3>
@@ -25,7 +29,7 @@ function Footer() {
               <a
                 href="https://github.com/1md3nd"
                 style={{ color: "white" }}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <AiFillGithub />
@@ -35,7 +39,7 @@ function Footer() {
               <a
                 href="https://twitter.com/1md3nd"
                 style={{ color: "white" }}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <AiOutlineTwitter />
@@ -45,7 +49,7 @@ function Footer() {
               <a
                 href="https://www.linkedin.com/in/1md3nd/"
                 style={{ color: "white" }}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaLinkedinIn />
@@ -55,7 +59,7 @@ function Footer() {
               <a
                 href="https://www.instagram.com/1md3nd"
                 style={{ color: "white" }}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <AiFillInstagram />

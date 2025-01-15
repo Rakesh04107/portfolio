@@ -9,9 +9,15 @@ import Leetcode from "./Leetcode";
 
 function About() {
   return (
-    <Container fluid className="about-section" style={{position:"relative"}}>
+    <Container fluid className="about-section" style={{ position: "relative" }}>
       <Container>
-        <Row style={{position:"relative", justifyContent: "center", padding: "10px" }}> 
+        <Row
+          style={{
+            position: "relative",
+            justifyContent: "center",
+            padding: "10px",
+          }}
+        >
           <Col
             md={7}
             style={{
@@ -33,13 +39,13 @@ function About() {
             <img src={laptopImg} alt="about" className="img-fluid" />
           </Col>
         </Row>
-        <h1 className="project-heading" style={{position:"relative"}}>
+        <h1 className="project-heading" style={{ position: "relative" }}>
           Professional <strong className="purple">Skillset </strong>
         </h1>
 
         <Techstack />
 
-        <h1 className="project-heading"style={{position:"relative"}}>
+        <h1 className="project-heading" style={{ position: "relative" }}>
           <strong className="purple">Tools</strong> I use
         </h1>
         <Toolstack />

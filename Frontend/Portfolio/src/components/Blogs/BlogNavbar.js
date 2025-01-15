@@ -21,15 +21,17 @@ function BlogNavbar() {
   };
 
   return (
-    <Navbar q
-      fixed="top"
-      expand="md"
-    >
+    <Navbar q fixed="top" expand="md">
       <Container>
         {/* Home Icon */}
         <Navbar.Brand as={Link} to="/" className="d-flex">
-        {theme === "light" ? <AiOutlineHome style={{ fontSize: "1.5em", cursor: "pointer" ,color:"black"}} />  : <AiOutlineHome style={{ fontSize: "1.5em", cursor: "pointer" }} /> } 
-          
+          {theme === "light" ? (
+            <AiOutlineHome
+              style={{ fontSize: "1.5em", cursor: "pointer", color: "black" }}
+            />
+          ) : (
+            <AiOutlineHome style={{ fontSize: "1.5em", cursor: "pointer" }} />
+          )}
         </Navbar.Brand>
 
         {/* Right-Aligned Options */}

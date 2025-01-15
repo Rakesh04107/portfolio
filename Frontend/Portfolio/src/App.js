@@ -21,7 +21,9 @@ function App() {
 
   return (
     <Router>
-      <ThemeProvider> {/* Wrap the entire app with ThemeProvider */}
+      <ThemeProvider>
+        {" "}
+        {/* Wrap the entire app with ThemeProvider */}
         <Preloader load={load} />
         <AppContent load={load} />
       </ThemeProvider>

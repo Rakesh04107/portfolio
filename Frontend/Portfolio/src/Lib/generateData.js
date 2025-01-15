@@ -32,9 +32,9 @@ const allBlogs = allFiles
     const readTime = readingTime(content);
 
     return {
-      data,       // Front matter (metadata)
-      content,    // Blog content
-      readTime,   // Reading time for the blog post
+      data, // Front matter (metadata)
+      content, // Blog content
+      readTime, // Reading time for the blog post
     };
   });
 

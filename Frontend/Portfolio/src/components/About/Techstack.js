@@ -1,11 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import {
-  DiPython,
-  DiGit,
-  DiDocker,
-  DiNodejs,
-} from "react-icons/di";
+import { DiPython, DiGit, DiDocker, DiNodejs } from "react-icons/di";
 import { FaAws } from "react-icons/fa";
 import {
   SiKubernetes,
@@ -17,7 +12,13 @@ import {
 
 function Techstack() {
   return (
-    <Row style={{ position: "relative", justifyContent: "center", paddingBottom: "50px" }}>
+    <Row
+      style={{
+        position: "relative",
+        justifyContent: "center",
+        paddingBottom: "50px",
+      }}
+    >
       <Col xs={4} md={2} className="tech-icons">
         <FaAws />
       </Col>

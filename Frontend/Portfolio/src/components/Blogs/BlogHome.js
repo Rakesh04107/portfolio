@@ -11,7 +11,7 @@ function BlogHome({ theme }) {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(
-          "https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/dev/public/blogs.json"
+          "https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/dev/public/blogs.json",
         );
         if (!response.ok) {
           throw new Error("Failed to fetch blogs");
@@ -29,9 +29,7 @@ function BlogHome({ theme }) {
   }, []);
 
   return (
-    <Container
-      className="blog-section"
-    >
+    <Container className="blog-section">
       {loading ? (
         <div className="d-flex justify-content-center">
           <Spinner animation="border" />
