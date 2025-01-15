@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import BlogCard from "./BlogCard";
 import { Row, Col, Container, Spinner, Alert } from "react-bootstrap";
 
-function BlogHome() {
+function BlogHome({ theme }) {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,8 +29,9 @@ function BlogHome() {
   }, []);
 
   return (
-    <Container className="blog-section">
-      <h1 className="my-4 text-center">Blog Home</h1>
+    <Container
+      className="blog-section"
+    >
       {loading ? (
         <div className="d-flex justify-content-center">
           <Spinner animation="border" />
@@ -43,7 +44,7 @@ function BlogHome() {
         <Row className="justify-content-center">
           {blogs.map((blog) => (
             <Col md={4} key={blog.id} className="mb-4">
-              <BlogCard blog={blog} />
+              <BlogCard blog={blog} theme={theme} />
             </Col>
           ))}
         </Row>

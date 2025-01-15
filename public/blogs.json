@@ -1,21 +1,24 @@
 [
   {
     "id": "1",
-    "title": "Exploring the Future of AI",
-    "author": "Jane Doe",
-    "headerImage": "https://picsum.photos/200"
+    "title": "The Rise of Serverless Computing",
+    "author": "John Doe",
+    "headerImage":"https://picsum.photos/200",
+    "time": "January 14, 2025"
   },
   {
     "id": "2",
-    "title": "A Guide to Modern Web Development",
+    "title": "Kubernetes 101 - An Introduction to Orchestrating Containers",
     "author": "John Smith",
-    "headerImage": "https://picsum.photos/200"
+    "headerImage": "https://picsum.photos/200",
+    "time": "January 10, 2025"
   },
   {
     "id": "3",
-    "title": "Understanding Blockchain Technology",
-    "author": "Alice Johnson",
-    "headerImage": "https://picsum.photos/200"
+    "title": "The Importance of Observability in Modern Applications",
+    "author": "Alex Johnson",
+    "headerImage": "https://picsum.photos/200",
+    "time": "January 12, 2025"
   },
   {
     "id": "4",

@@ -8,31 +8,39 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            Hi Everyone, I am <span className="purple">Anurag Ranjan</span>
-            from <span className="purple"> Delhi, India.</span>
+            Hi Everyone, I am <span className="purple">Anurag Ranjan </span>
+             from <span className="purple">Delhi, India.</span>
             <br />
-            I am currently employed as a Trainee Engineer at <span className="purple">Impressico Business Solutions</span>.
+            I am currently working as a DevOps Trainee Engineer at <span className="purple">Impressico Business Solutions</span>.
             <br />
-            I have completed my B.Tech in Information Technology from <span className="purple">KIET Group of Institutions</span>
+            I hold a B.Tech degree in Information Technology from <span className="purple">KIET Group of Institutions </span>
             with a CGPA of 8.14.
             <br />
             <br />
-            Apart from coding, some other activities that I love to do!
+            I am passionate about cloud technologies, infrastructure as code, and CI/CD pipelines. I have hands-on experience with tools like AWS, Docker, and Kubernetes.
+            <br />
+            Additionally, I have a keen interest in software development and artificial intelligence, where I explore building scalable applications and intelligent systems.
+            <br />
+            <br />
+            Apart from my professional interests, here are some activities I enjoy:
           </p>
           <ul>
             <li className="about-activity">
-              <ImPointRight /> Playing Games
+              <ImPointRight /> Solving coding challenges on LeetCode
             </li>
             <li className="about-activity">
-              <ImPointRight /> Writing Tech Blogs
+              <ImPointRight /> Exploring new DevOps tools and technologies
             </li>
             <li className="about-activity">
-              <ImPointRight /> Travelling
+              <ImPointRight /> Participating in tech meetups and hackathons
+            </li>
+            <li className="about-activity">
+              <ImPointRight /> Experimenting with AI models and frameworks
             </li>
           </ul>
 
           <p style={{ color: "var(--clr-primary-a40)" }}>
-            "Strive to build things that make a difference!"{" "}
+          Code like an artist, think like a scientist, and dream like a child.{" "}
           </p>
           <footer className="blockquote-footer">Anurag Ranjan</footer>
         </blockquote>

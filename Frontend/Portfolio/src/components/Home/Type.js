@@ -5,10 +5,9 @@ function Type() {
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const phrases = [
-    "DevOps Enthusiast",
-    "Cloud Infrastructure Engineer",
-    "MERN Stack Developer",
-    "Open Source Contributor",
+      "DevOps Enthusiast",
+      "Cloud Specialist",
+      "Problem Solver",
   ];
   const currentPhrase = phrases[index % phrases.length];
   const typingSpeed = 150;

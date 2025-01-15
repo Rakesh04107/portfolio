@@ -9,16 +9,14 @@ function Blog() {
   return (
     <Container
       fluid
-      className={`blog-section-${
-        theme === "dark" ? "dark":"light"
-      }`} // Apply background and text color based on the theme
-      style={{minHeight:"100%"}}
+      className="blog-section"
+      style={{ minHeight: "100vh" }}
     >
-      <Container style={{ position: "relative" }}>
-        <h1 className="blog-heading">
+      <Container style={{ position: "relative", padding: "2rem" }}>
+        <h1 className="blog-heading text-center mb-4">
           Personal <strong className="purple">Blogs</strong>
         </h1>
-        <BlogHome />
+        <BlogHome theme={theme} />
       </Container>
     </Container>
   );
