@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600px" height="400px" viewBox="0 0 600 400">
+  <style>
+    <!-- @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); -->
+  </style>
+  <rect width="600" height="400" fill="transparent" />
+  <text x="50%" y="50%" fill="#ff6a47" font-size="300px" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle" dominant-baseline="middle">
+    AR
+  </text>
+</svg>

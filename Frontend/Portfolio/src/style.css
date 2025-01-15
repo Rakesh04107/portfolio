@@ -5,7 +5,7 @@ html {
     var(--clr-primary-a30)
   );
   --section-background-color-dark: linear-gradient(
-    to bottom right,
+    to bottom right,  
     var(--clr-surface-a10),
     var(--clr-surface-a30)
   );
@@ -101,12 +101,12 @@ button:focus {
    border-radius: 12px;
 }
 
-body.light-mode {
+body.light-theme {
   background-color: var(--clr-surface-a50) !important;
   color: var(--clr-primary-a0) !important;
 }
 
-body.dark-mode {
+body.dark-theme {
   background-color: var(--clr-surface-a0) !important;
   color: var(--clr-primary-a50) !important;
 }
@@ -488,7 +488,7 @@ body.dark-mode {
 /* --------- */
 /* .* Container styling */
 .blog-section {
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
   padding: 2rem;
   border-radius: 8px;
@@ -631,7 +631,35 @@ body.dark-mode {
   font-weight: 500 !important;
   padding-top: 10px !important;
 }
+.bg-light {
+  background-color: var(--clr-surface-a50) !important;
+  color: var(--clr-primary-a0) !important;
+}
 
+.bg-dark {
+  background-color: var(--clr-surface-a0) !important;
+  color: var(--clr-primary-a50) !important;
+}
+
+.blog-card-title {
+  font-size: 1.5rem;
+  color: inherit; /* Inherit color based on theme */
+}
+
+.blog-card-author {
+  font-size: 1rem;
+  color: var(--clr-primary-a30); /* Muted color for author text */
+}
+
+.btn-primary {
+  background-color: var(--clr-primary-a40) !important;
+  border-color: var(--clr-primary-a40) !important;
+}
+
+.btn-secondary {
+  background-color: var(--clr-primary-a50) !important;
+  border-color: var(--clr-primary-a50) !important;
+}
 /* --------- */
 /* About */
 /* --------- */

@@ -3,12 +3,19 @@ import { Container, Row, Col } from "react-bootstrap";
 import homeLogo from "../../Assets/home-main.png";
 import Home2 from "./Home2";
 import Type from "./Type";
+import { useTheme } from "../../context/ThemeContext"; // Import useTheme hook
 
 function Home() {
+  const { theme } = useTheme(); // Get the current theme from context
+
   return (
     <section>
-      <Container fluid className="home-section" id="home">
-        <Container className="home-content" style={{position:"relative"}}>
+      <Container
+        fluid
+        className={`home-section-${theme === "light" ? "light" : "dark"}`}
+        id="home"
+      >
+        <Container className="home-content" style={{ position: "relative" }}>
           <Row>
             <Col md={7} className="home-header">
               <h1 style={{ paddingBottom: 15 }} className="heading">

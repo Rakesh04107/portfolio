@@ -4,8 +4,8 @@ import { ThemeProvider } from "./context/ThemeContext"; // Import ThemeProvider
 import Preloader from "./components/Pre";
 import AppContent from "./components/AppContent"; // Import AppContent component
 
-import "./style.css";
 import "./App.css";
+import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {

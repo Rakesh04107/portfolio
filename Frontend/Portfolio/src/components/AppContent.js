@@ -1,7 +1,6 @@
 import React from "react";
-import { Route, Routes, Navigate, useLocation } from "react-router-dom";
-import Navbar from "./Navbar";
-import BlogNavbar from "./Blogs/BlogNavbar";
+import { Route, Routes, Navigate } from "react-router-dom";
+import NavbarComponent from "./NavbarComponent";
 import Home from "./Home/Home";
 import About from "./About/About";
 import Projects from "./Projects/Projects";
@@ -13,15 +12,13 @@ import BlogRead from "./Blogs/BlogRead";
 
 // AppContent Component handles route changes and renders Navbar based on the location
 function AppContent({ load }) {
-  const location = useLocation();
 
   return (
     <div
       className="App"
       id={load ? "no-scroll" : "scroll"}
     >
-      {/* Conditionally render Navbar */}
-      {location.pathname.startsWith("/blog") ? <BlogNavbar /> : <Navbar />}
+ <NavbarComponent />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />

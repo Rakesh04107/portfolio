@@ -1,55 +1,40 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.png";  // Use your own image here
+import myImg from "../../Assets/avatar.png"; // Use your own image here
 import Tilt from "react-parallax-tilt";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
+import { AiFillGithub, AiOutlineTwitter, AiFillInstagram } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
+import { useTheme } from "../../context/ThemeContext";
 
 function Home2() {
+  const { theme } = useTheme();
+
   return (
-    <Container fluid className="home-about-section" id="about">
+    <Container
+      fluid
+      className={`home-about-section ${theme === "light" ? "light-theme" : "dark-theme"}`}
+      id="about"
+    >
       <Container>
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+              LET ME <span className="highlight"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              I fell in love with programming and I have at least learnt
-              something, I think… 🤷‍♂️
-              <br />
-              <br />I am fluent in classics like
-              <i>
-                <b className="purple"> Python, Shell Scripting, and Go. </b>
-              </i>
+              I'm a DevOps and Software Engineer with a passion for
+              <b className="highlight"> Cloud Technologies</b>, 
+              <b className="highlight"> AI & Automation</b>.
               <br />
               <br />
-              My fields of interest are building new &nbsp;
-              <i>
-                <b className="purple">Cloud Technologies and Infrastructure</b> and
-                also in areas related to{" "}
-                <b className="purple">
-                  DevOps and Automation.
-                </b>
-              </i>
+              <b className="highlight">DevOps & Cloud:</b> I've implemented automated solutions for cloud frameworks like AWS, harnessing the power of Docker and Jenkins for seamless deployments.
               <br />
               <br />
-              Whenever possible, I also apply my passion for developing
-              products with <b className="purple">Node.js</b> and
-              <i>
-                <b className="purple">
-                  {" "}
-                  Modern Javascript Libraries and Frameworks
-                </b>
-              </i>
-              &nbsp; like
-              <i>
-                <b className="purple"> React.js and Next.js</b>
-              </i>
+              <b className="highlight">AI & Machine Learning:</b> Passionate about utilizing AI to solve real-world problems, evidenced by my work on projects like AI-driven code reviews and ML-models for predictions.
+              <br />
+              <br />
+              I'm always exploring new horizons in
+              <b className="highlight"> Software Development</b> using modern web technologies, which I integrate into both my professional and personal projects.
             </p>
           </Col>
           <Col md={4} className="myAvtar">
@@ -62,7 +47,7 @@ function Home2() {
           <Col md={12} className="home-about-social">
             <h1>FIND ME ON</h1>
             <p>
-              Feel free to <span className="purple">connect </span>with me
+              Feel free to <span className="highlight">connect </span>with me
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">
@@ -70,7 +55,7 @@ function Home2() {
                   href="https://github.com/1md3nd"
                   target="_blank"
                   rel="noreferrer"
-                  className="icon-colour  home-social-icons"
+                  className="icon-colour home-social-icons"
                 >
                   <AiFillGithub />
                 </a>
@@ -80,7 +65,7 @@ function Home2() {
                   href="https://twitter.com/1md3nd"
                   target="_blank"
                   rel="noreferrer"
-                  className="icon-colour  home-social-icons"
+                  className="icon-colour home-social-icons"
                 >
                   <AiOutlineTwitter />
                 </a>
@@ -90,7 +75,7 @@ function Home2() {
                   href="https://www.linkedin.com/in/1md3nd/"
                   target="_blank"
                   rel="noreferrer"
-                  className="icon-colour  home-social-icons"
+                  className="icon-colour home-social-icons"
                 >
                   <FaLinkedinIn />
                 </a>

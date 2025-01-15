@@ -21,7 +21,7 @@ function BlogNavbar() {
   };
 
   return (
-    <Navbar
+    <Navbar q
       fixed="top"
       expand="md"
     >
