@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client"; // Use 'react-dom/client' for React 18
 import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
-import store from './store';
+import store from "./store";
 import reportWebVitals from "./reportWebVitals";
 
 // Create a root element using ReactDOM.createRoot
@@ -15,7 +15,7 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

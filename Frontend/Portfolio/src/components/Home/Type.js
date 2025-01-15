@@ -4,11 +4,7 @@ function Type() {
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const phrases = [
-      "DevOps Enthusiast",
-      "Cloud Specialist",
-      "Problem Solver",
-  ];
+  const phrases = ["DevOps Enthusiast", "Cloud Specialist", "Problem Solver"];
   const currentPhrase = phrases[index % phrases.length];
   const typingSpeed = 150;
   const deletingSpeed = 75;
@@ -42,7 +38,7 @@ function Type() {
       }
     }
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, [text, isDeleting, currentPhrase, phrases.length]);
 
   return (

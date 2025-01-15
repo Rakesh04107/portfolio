@@ -4,8 +4,8 @@ import ProjectCard from "./ProjectCards";
 
 function Projects() {
   return (
-    <Container fluid className="project-section" >
-      <Container style={{position:"relative"}}>
+    <Container fluid className="project-section">
+      <Container style={{ position: "relative" }}>
         <h1 className="project-heading">
           My Recent <strong className="purple">Works </strong>
         </h1>

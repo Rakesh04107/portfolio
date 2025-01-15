@@ -2,7 +2,11 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/avatar.png"; // Use your own image here
 import Tilt from "react-parallax-tilt";
-import { AiFillGithub, AiOutlineTwitter, AiFillInstagram } from "react-icons/ai";
+import {
+  AiFillGithub,
+  AiOutlineTwitter,
+  AiFillInstagram,
+} from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useTheme } from "../../context/ThemeContext";
 
@@ -23,18 +27,25 @@ function Home2() {
             </h1>
             <p className="home-about-body">
               I'm a DevOps and Software Engineer with a passion for
-              <b className="highlight"> Cloud Technologies</b>, 
+              <b className="highlight"> Cloud Technologies</b>,
               <b className="highlight"> AI & Automation</b>.
               <br />
               <br />
-              <b className="highlight">DevOps & Cloud:</b> I've implemented automated solutions for cloud frameworks like AWS, harnessing the power of Docker and Jenkins for seamless deployments.
+              <b className="highlight">DevOps & Cloud:</b> I've implemented
+              automated solutions for cloud frameworks like AWS, harnessing the
+              power of Docker and Jenkins for seamless deployments.
               <br />
               <br />
-              <b className="highlight">AI & Machine Learning:</b> Passionate about utilizing AI to solve real-world problems, evidenced by my work on projects like AI-driven code reviews and ML-models for predictions.
+              <b className="highlight">AI & Machine Learning:</b> Passionate
+              about utilizing AI to solve real-world problems, evidenced by my
+              work on projects like AI-driven code reviews and ML-models for
+              predictions.
               <br />
               <br />
               I'm always exploring new horizons in
-              <b className="highlight"> Software Development</b> using modern web technologies, which I integrate into both my professional and personal projects.
+              <b className="highlight"> Software Development</b> using modern
+              web technologies, which I integrate into both my professional and
+              personal projects.
             </p>
           </Col>
           <Col md={4} className="myAvtar">

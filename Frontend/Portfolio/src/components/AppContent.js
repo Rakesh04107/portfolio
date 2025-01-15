@@ -12,13 +12,9 @@ import BlogRead from "./Blogs/BlogRead";
 
 // AppContent Component handles route changes and renders Navbar based on the location
 function AppContent({ load }) {
-
   return (
-    <div
-      className="App"
-      id={load ? "no-scroll" : "scroll"}
-    >
- <NavbarComponent />
+    <div className="App" id={load ? "no-scroll" : "scroll"}>
+      <NavbarComponent />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -7,7 +7,12 @@ import { Link } from "react-router-dom";
 import logo from "../Assets/logo.svg";
 import { CgGitFork } from "react-icons/cg";
 import { ImBlog } from "react-icons/im";
-import { AiFillStar, AiOutlineHome, AiOutlineFundProjectionScreen, AiOutlineUser } from "react-icons/ai";
+import {
+  AiFillStar,
+  AiOutlineHome,
+  AiOutlineFundProjectionScreen,
+  AiOutlineUser,
+} from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
 // import { FaMoon, FaSun } from "react-icons/fa";
 // import { useTheme } from "../context/ThemeContext"; // Import useTheme hook
@@ -37,7 +42,12 @@ function NavbarComponent() {
   // };
 
   return (
-    <Navbar expanded={expand} fixed="top" expand="md" className={navColour ? "sticky" : "navbar"}>
+    <Navbar
+      expanded={expand}
+      fixed="top"
+      expand="md"
+      className={navColour ? "sticky" : "navbar"}
+    >
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex">
           <img src={logo} className="img-fluid logo" alt="brand" />
@@ -63,8 +73,15 @@ function NavbarComponent() {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link as={Link} to="/project" onClick={() => setExpand(false)}>
-                <AiOutlineFundProjectionScreen style={{ marginBottom: "2px" }} /> Projects
+              <Nav.Link
+                as={Link}
+                to="/project"
+                onClick={() => setExpand(false)}
+              >
+                <AiOutlineFundProjectionScreen
+                  style={{ marginBottom: "2px" }}
+                />{" "}
+                Projects
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
@@ -78,8 +95,13 @@ function NavbarComponent() {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item className="fork-btn">
-              <Button href="https://github.com/1md3nd/Portfolio" target="_blank" className="fork-btn-inner">
-                <CgGitFork style={{ fontSize: "1.2em" }} /> <AiFillStar style={{ fontSize: "1.1em" }} />
+              <Button
+                href="https://github.com/1md3nd/Portfolio"
+                target="_blank"
+                className="fork-btn-inner"
+              >
+                <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
+                <AiFillStar style={{ fontSize: "1.1em" }} />
               </Button>
             </Nav.Item>
             {/* <Nav.Item style={{marginTop:"auto",marginBottom:"auto"}} >
