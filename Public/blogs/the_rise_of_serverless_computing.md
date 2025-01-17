@@ -1,8 +1,9 @@
 ---
-title: The Rise of Serverless Computing
 author: John Doe
 headerImage: https://picsum.photos/200
+id: the_rise_of_serverless_computing
 time: January 14, 2025
+title: The Rise of Serverless Computing
 ---
 
 # The Rise of Serverless Computing

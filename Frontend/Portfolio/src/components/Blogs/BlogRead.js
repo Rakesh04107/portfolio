@@ -20,7 +20,7 @@ function BlogDetail() {
     const fetchBlogContent = async () => {
       try {
         // Fetch the blog content including metadata
-        const url = `https://raw.githubusercontent.com/1md3nd/portfolio/dev/public/blogs/${blogId}.md`;
+        const url = `https://raw.githubusercontent.com/1md3nd/portfolio/dev/Public/raw_blogs/${blogId}.md`;
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -35,7 +35,6 @@ function BlogDetail() {
         // Update state
         setMetadata(blogMetadata);
         setContent(blogContent);
-        console.log(metadata, content);
       } catch (err) {
         setError(err.message);
         setContent(

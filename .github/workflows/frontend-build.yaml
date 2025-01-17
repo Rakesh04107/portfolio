@@ -3,7 +3,10 @@ name: Build and Deploy React App with CloudFront
 on:
   push:
     branches:
-      - main  # Run this workflow on pushes to the main branch.
+      - main
+    paths:
+      - Frontend/**
+      - .github/workflows/frontend-build.yaml
 
 env:
   BUCKET_NAME: "test-1md3nd-cloudfront-s3-bucket-1"
