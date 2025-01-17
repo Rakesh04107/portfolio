@@ -1,11 +1,12 @@
 name: Checks blogs Format and creates metadata
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - dev
     paths:
-      - Public/blogs
+      - Public/blogs/**
 
 jobs:
   check-format:

@@ -1,10 +1,11 @@
 name: Compile LaTeX
 on:
+  workflow_dispatch:
   push:
     branches:
       - dev
     paths:
-      - Public/resume/latex
+      - Public/resume/latex/**
 
 jobs:
   container:
