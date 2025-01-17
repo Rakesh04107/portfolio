@@ -6,7 +6,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 
 // Use the raw URL from GitHub for the PDF
 const pdf =
-  "https://raw.githubusercontent.com/1md3nd/resume/refs/heads/dev/Public/resume/out/default.pdf";
+  "https://raw.githubusercontent.com/1md3nd/resume/refs/heads/main/Public/resume/out/default.pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
