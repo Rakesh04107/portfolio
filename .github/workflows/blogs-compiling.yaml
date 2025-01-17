@@ -1,4 +1,4 @@
-name: Checks blogs Format and creates metadata
+name: Blog Format Check and Metadata Generation
 
 on:
   workflow_dispatch:
@@ -12,29 +12,30 @@ jobs:
   check-format:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repository code
+      # Step 1: Checkout the repository code
       - name: Checkout Repository Code
         uses: actions/checkout@v4
-        
+
+      # Step 2: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           architecture: 'x64'
 
-      - name: Install Python dependency
+      # Step 3: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r Public/utils/requirements.txt
 
+      # Step 4: Run the Blog Compiler script
       - name: Run the Blog Compiler
-        run: |
-          ls
-          python3 Public/utils/compile.py
-      
-      - name: Push the Blog build files
+        run: python Public/utils/compile.py
+
+      # Step 5: Push generated blog files
+      - name: Push Generated Blog Files
         uses: EndBug/add-and-commit@v9
         with:
           add: Public/raw_blogs
-          message: "Uploaded latest Blog Build and deleted the Buffer blogs"
-      
+          message: "Uploaded latest blog build and removed buffer blogs"
