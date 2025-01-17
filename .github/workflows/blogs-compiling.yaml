@@ -33,7 +33,7 @@ jobs:
       
       - name: Push the Blog build files
         uses: EndBug/add-and-commit@v9
-          with:
-            add: Public/raw_blogs
-            message: "Uploaded latest Blog Build and deleted the Buffer blogs"
+        with:
+          add: Public/raw_blogs
+          message: "Uploaded latest Blog Build and deleted the Buffer blogs"
       
