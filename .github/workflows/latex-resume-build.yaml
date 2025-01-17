@@ -15,6 +15,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Git
+        run: apt-get update && apt-get install -y git
+        
       - name: Build using latexmk
         run: latexmk -pdf -output-directory=Public/resume/out Public/resume/latex/default.tex
 
