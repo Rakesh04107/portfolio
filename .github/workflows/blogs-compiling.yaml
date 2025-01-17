@@ -7,6 +7,7 @@ on:
       - dev
     paths:
       - Public/blogs/**
+      - .github/workflows/blogs-compiling.yaml
 
 jobs:
   check-format:

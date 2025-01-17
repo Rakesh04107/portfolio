@@ -2,8 +2,11 @@
 name: Compile LaTeX
 on:
   push:
+    branch:
+      - dev
     paths:
       - Public/resume/latex/**
+      - .github/workflows/latex-resume-build.yaml
   workflow_dispatch:
 
 jobs:

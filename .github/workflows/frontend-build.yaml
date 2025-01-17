@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - Frontend/**
+      - .github/workflows/frontend-build.yaml
 
 env:
   BUCKET_NAME: "test-1md3nd-cloudfront-s3-bucket-1"
