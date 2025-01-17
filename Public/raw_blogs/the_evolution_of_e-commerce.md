@@ -1,6 +1,6 @@
 ---
 author: Anurag Ranjan
-headerImage: https://picsum.photos/474
+headerImage: https://picsum.photos/606
 id: the_evolution_of_e-commerce
 time: 17 01 2025
 title: The Evolution of E-commerce

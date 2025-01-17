@@ -1,6 +1,6 @@
 ---
 author: Tony Stark
-headerImage: https://picsum.photos/147
+headerImage: https://picsum.photos/618
 id: the_rise_of_remote_work
 time: January 12, 2025
 title: The Rise of Remote Work

@@ -1,6 +1,6 @@
 ---
 author: Tony Stark
-headerImage: https://picsum.photos/360
+headerImage: https://picsum.photos/730
 id: the_impact_of_social_media_on_society
 time: January 12, 2025
 title: The Impact of Social Media on Society

@@ -1,6 +1,6 @@
 ---
 author: James Bond
-headerImage: https://picsum.photos/257
+headerImage: https://picsum.photos/332
 id: introduction_to_quantum_computing
 time: January 12, 2025
 title: Introduction to Quantum Computing
