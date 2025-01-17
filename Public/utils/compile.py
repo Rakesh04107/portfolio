@@ -2,6 +2,7 @@ import os
 import frontmatter
 from datetime import datetime
 import json
+import random
 
 # Define constants
 METADATA_KEYS = {'title': True, 'author': True, 'id': False, 'headerImage': False, 'time': False}
@@ -37,7 +38,7 @@ def add_missing_metadata(file_data, missing_key):
     if missing_key == "id":
         file_data[missing_key] = file_data["title"].replace(" ", "_").lower()
     elif missing_key == "headerImage":
-        file_data[missing_key] = False
+        file_data[missing_key] = f"https://picsum.photos/{(lambda: random.randint(100, 999))()}"
     elif missing_key == "time":
         file_data[missing_key] = datetime.now().strftime("%d %m %Y")
     elif missing_key == "author":

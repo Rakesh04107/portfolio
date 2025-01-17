@@ -39,3 +39,5 @@ jobs:
         with:
           add: Public/raw_blogs
           message: "Uploaded latest blog build and removed buffer blogs"
+          author_name: "GitHub Actions"
+          author_email: "actions@github.com"

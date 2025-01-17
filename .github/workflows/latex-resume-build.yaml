@@ -21,5 +21,7 @@ jobs:
       - name: Upload document
         uses: EndBug/add-and-commit@v9
         with:
-          add: Public/resume/out/default.pdf
+          add: Public/resume/out
           message: "Uploaded latest resume pdf"
+          author_name: "GitHub Actions"
+          author_email: "actions@github.com"
