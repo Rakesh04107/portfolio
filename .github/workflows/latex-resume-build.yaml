@@ -44,7 +44,7 @@ jobs:
       - name: List
         run: |
           ls
-          mv default.pdf Public/resume/out/default.pdf
+          mv ./default.pdf ./Public/resume/out/default.pdf
         
       - name: Upload pdf to github
         uses: EndBug/add-and-commit@v9
