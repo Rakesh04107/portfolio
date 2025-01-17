@@ -11,7 +11,7 @@ function BlogHome({ theme }) {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(
-          "https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/dev/Public/raw_blogs/blogs.json",
+          "https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/main/Public/raw_blogs/blogs.json",
         );
         if (!response.ok) {
           throw new Error("Failed to fetch blogs");

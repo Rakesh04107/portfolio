@@ -3,7 +3,7 @@ name: Compile LaTeX
 on:
   push:
     branch:
-      - dev
+      - main
     paths:
       - Public/resume/latex/**
       - .github/workflows/latex-resume-build.yaml
@@ -21,7 +21,7 @@ jobs:
         run: latexmk -pdf -output-directory=Public/resume/out Public/resume/latex/default.tex
 
       - name: List
-        run: ls out
+        run: ls Public/resume/out
 
       - name: Upload document
         uses: actions/upload-artifact@v4
