@@ -44,6 +44,8 @@ jobs:
       - name: List
         run: |
           ls
+          ls Public/resume
+          mkdir Public/resume/out
           mv ./default.pdf ./Public/resume/out/default.pdf
         
       - name: Upload pdf to github
