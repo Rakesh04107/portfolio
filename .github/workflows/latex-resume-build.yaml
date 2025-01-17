@@ -1,0 +1,25 @@
+name: Compile LaTeX
+on:
+  push:
+    paths:
+      - '**.tex'
+
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    container: kjarosh/latex:2024.4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build using latexmk
+        run: latexmk -pdf -output-directory=out latex/default.tex
+
+      - name: List
+        run: ls -la
+
+      - name: Upload document
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: out/default.pdf
+          message: "Uploaded latest resume pdf"

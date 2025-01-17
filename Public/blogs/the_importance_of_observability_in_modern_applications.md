@@ -1,8 +1,9 @@
 ---
-title: The Importance of Observability in Modern Applications
 author: Alex Johnson
-headerImage: https://example.com/observability.jpg
+headerImage: https://picsum.photos/201
+id: the_importance_of_observability_in_modern_applications
 time: January 12, 2025
+title: The Importance of Observability in Modern Applications
 ---
 
 # The Importance of Observability in Modern Applications
