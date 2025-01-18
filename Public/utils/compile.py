@@ -69,7 +69,8 @@ def process_blog_file(file_name):
         # Write updated file to RAW_BLOG_PATH
         output_file_name = f"{file_data['id']}.md"
         output_path = get_file_path(RAW_BLOG_PATH, output_file_name)
-        save_frontmatter(output_path, file_data)
+        if not os.path.exists(output_path):
+            save_frontmatter(output_path, file_data)
         print(f"Saved processed file to: {output_path}")
     except MetadataValidationException as e:
         print(f"Metadata error in {file_name}: {e}")
