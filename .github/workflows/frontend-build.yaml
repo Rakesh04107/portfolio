@@ -12,7 +12,7 @@ on:
 env:
   AWS_REGION: "us-east-1"
   BUCKET_NAME: ${{ github.ref == 'refs/heads/main' && 'test-1md3nd-cloudfront-s3-bucket-1' || 'dev-www.1md3nd.com-s3bucket' }}
-  CLOUDFRONT_DISTRIBUTION_ID: ${{ github.ref == 'refs/heads/main' && "EGLB0491BG8I7" || "E1BNHR8A1WWMBI"}}
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ github.ref == 'refs/heads/main' && 'EGLB0491BG8I7' || 'E1BNHR8A1WWMBI' }}
 
 permissions:
   id-token: write
