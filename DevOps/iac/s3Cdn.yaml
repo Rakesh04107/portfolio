@@ -17,7 +17,7 @@ Resources:
   s3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub "${environment}-${service}-s3Bucket"
+      BucketName: !Sub "${environment}-${service}-s3bucket"
       OwnershipControls:
         Rules:
           - ObjectOwnership: BucketOwnerEnforced
@@ -89,4 +89,4 @@ Outputs:
     Value: !Ref s3Bucket
     Description: Name of the sample Amazon S3 bucket with a logging configuration.
     Export:
-      Name: !Sub "${environment}-${service}-s3Bucket"
+      Name: !Sub "${environment}-${service}-s3bucket"
