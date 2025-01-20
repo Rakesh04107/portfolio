@@ -9,7 +9,7 @@ Parameters:
       - dev
   service:
     Type: String
-    Default: www.1md3md.com
+    Default: 'www.1md3md.com'
     AllowedValues:
       - www.1md3nd.com
 

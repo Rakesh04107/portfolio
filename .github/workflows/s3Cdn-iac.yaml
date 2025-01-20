@@ -11,7 +11,7 @@ on:
 
 env:
   STAGE: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
-  BUCKET_NAME: www.1md3nd.com
+  BUCKET_NAME: "www.1md3nd.com"
   AWS_REGION: "us-east-1"
 
 permissions:
