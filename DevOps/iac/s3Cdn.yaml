@@ -44,7 +44,6 @@ Resources:
         Origins:
           - Id: BucketOrigin
             DomainName: !GetAtt s3Bucket.RegionalDomainName 
-            OriginPath: /*
             S3OriginConfig:
               OriginAccessIdentity: ''
             OriginAccessControlId: !GetAtt frontendCloudfrontOAC.Id
@@ -64,6 +63,12 @@ Resources:
           SslSupportMethod: sni-only
         DefaultRootObject: index.html
         PriceClass: PriceClass_100
+        CustomErrorResponses:
+          - ErrorCachingMinTTL: 10
+            ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+
         
   s3BucketPolicy:
     Type: AWS::S3::BucketPolicy
