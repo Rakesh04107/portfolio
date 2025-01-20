@@ -82,7 +82,7 @@ Resources:
               Service: 'cloudfront.amazonaws.com'
             Condition:
               StringLike:
-                AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${FrontendDistribution}
+                AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${frontendCloudFrontDistribution}
 
 Outputs:
   CloudFrontDomain:
