@@ -45,6 +45,8 @@ Resources:
           - Id: BucketOrigin
             DomainName: !GetAtt s3Bucket.RegionalDomainName 
             OriginPath: /*
+            S3OriginConfig:
+              OriginAccessIdentity: ''
             OriginAccessControlId: !GetAtt frontendCloudfrontOAC.Id
         DefaultCacheBehavior:
           TargetOriginId: BucketOrigin
