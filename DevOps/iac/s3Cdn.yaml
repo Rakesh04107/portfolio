@@ -27,18 +27,27 @@ Resources:
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
 
-  cloudFrontDistribution:
+  frontendCloudfrontOAC:
+      Type: AWS::CloudFront::OriginAccessControl
+      Properties:
+        OriginAccessControlConfig:
+          Name: frontendCloudfrontOAC
+          OriginAccessControlOriginType: s3
+          SigningBehavior: always
+          SigningProtocol: sigv4
+        
+  frontendCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
         Enabled: true
         Origins:
-          - Id: S3Origin
-            DomainName: !GetAtt s3Bucket.DomainName
-            S3OriginConfig:
-              OriginAccessIdentity: ""
+          - Id: BucketOrigin
+            DomainName: !GetAtt s3Bucket.RegionalDomainName 
+            OriginPath: /*
+            OriginAccessControlId: !GetAtt frontendCloudfrontOAC.Id
         DefaultCacheBehavior:
-          TargetOriginId: S3Origin
+          TargetOriginId: BucketOrigin
           ViewerProtocolPolicy: redirect-to-https
           CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
           AllowedMethods:
@@ -73,10 +82,7 @@ Resources:
               Service: 'cloudfront.amazonaws.com'
             Condition:
               StringLike:
-                'AWS:SourceArn': !Join
-                  - ''
-                  - - 'arn:aws:cloudfront::120569601292:distribution/'
-                    - !Ref cloudFrontDistribution
+                AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${FrontendDistribution}
 
 Outputs:
   CloudFrontDomain:

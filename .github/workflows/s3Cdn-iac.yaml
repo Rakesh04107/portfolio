@@ -19,7 +19,7 @@ permissions:
   contents: read
 
 jobs:
-  build-and-deploy:
+  iac-stack-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository Code
