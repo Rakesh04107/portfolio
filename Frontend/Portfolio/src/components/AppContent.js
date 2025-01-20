@@ -9,6 +9,7 @@ import Resume from "./Resume/ResumeNew";
 import Blog from "./Blogs/Blog";
 import ScrollToTop from "./ScrollToTop";
 import BlogRead from "./Blogs/BlogRead";
+import LocationHome from "./LocationView/LocationHome";
 
 // AppContent Component handles route changes and renders Navbar based on the location
 function AppContent({ load }) {
@@ -23,6 +24,7 @@ function AppContent({ load }) {
         <Route path="/resume" element={<Resume />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:blogId" element={<BlogRead />} />
+        <Route path="/location" element={<LocationHome />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />

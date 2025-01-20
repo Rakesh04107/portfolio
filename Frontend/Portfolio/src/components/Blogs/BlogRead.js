@@ -5,6 +5,8 @@ import matter from "gray-matter";
 import { Container, Spinner, Alert, Image } from "react-bootstrap";
 import { Buffer } from "buffer";
 
+const branch = process.env.REACT_APP_BRANCH || 'main';
+
 function BlogDetail() {
   const { blogId } = useParams();
   const [content, setContent] = useState("");
@@ -20,7 +22,7 @@ function BlogDetail() {
     const fetchBlogContent = async () => {
       try {
         // Fetch the blog content including metadata
-        const url = `https://raw.githubusercontent.com/1md3nd/portfolio/dev/Public/raw_blogs/${blogId}.md`;
+        const url = `https://raw.githubusercontent.com/1md3nd/portfolio/${branch}/Public/raw_blogs/${blogId}.md`;
         const response = await fetch(url);
 
         if (!response.ok) {

@@ -10,10 +10,9 @@ on:
       - .github/workflows/frontend-build.yaml
 
 env:
-  STAGE: ${{ github.ref == 'refs/heads/main' && 'main' || 'dev' }}
-  BUCKET_NAME: ${{ env.STAGE }}-1md3nd.com
   AWS_REGION: "us-east-1"
-  CLOUDFRONT_DISTRIBUTION_ID: "EGLB0491BG8I7"
+  BUCKET_NAME: ${{ github.ref == 'refs/heads/main' && 'test-1md3nd-cloudfront-s3-bucket-1' || 'dev-www.1md3nd.com-s3bucket' }}
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ github.ref == 'refs/heads/main' && "EGLB0491BG8I7" || "E1BNHR8A1WWMBI"}}
 
 permissions:
   id-token: write
@@ -23,45 +22,40 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repository code
       - name: Checkout Repository Code
         uses: actions/checkout@v4
         
-      # Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # Install dependencies and build the React app
       - name: Install Dependencies and Build
         run: |
           cd Frontend/Portfolio
           npm install
           npm run build
+        env:
+          REACT_APP_BRANCH: ${{ github.ref_name }}
 
-      # Configure AWS credentials using GitHub OIDC
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::120569601292:role/OIDC-GitHub-Role
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/OIDC-GitHub-Role
           role-session-name: github-actions-session
           aws-region: ${{ env.AWS_REGION }}
 
-      # Upload the build files to S3
       - name: Deploy to S3
         run: |
           cd Frontend/Portfolio
           aws s3 sync ./build s3://${{ env.BUCKET_NAME }} --delete
           aws s3 cp ./src/Assets/portfolio-image.jpg s3://${{ env.BUCKET_NAME }}/assets/
 
-      # Invalidate CloudFront cache
       - name: Invalidate CloudFront Cache
         run: |
           aws cloudfront create-invalidation \
             --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"
 
-      # Output success message
       - name: Deployment Complete
         run: echo "🎉 React app has been successfully deployed and CloudFront cache invalidated!"

@@ -4,9 +4,9 @@ import Button from "react-bootstrap/Button";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 
-// Use the raw URL from GitHub for the PDF
-const pdf =
-  "https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/main/Public/resume/out/default.pdf";
+const branch = process.env.REACT_APP_BRANCH || 'main';
+
+const pdf = `https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/${branch}/Public/resume/out/default.pdf`;
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
