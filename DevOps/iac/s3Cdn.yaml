@@ -9,9 +9,9 @@ Parameters:
       - dev
   service:
     Type: String
-    Default: 'www.1md3nd.com'
+    Default: 'www-1md3nd-com'
     AllowedValues:
-      - www.1md3nd.com
+      - www-1md3nd-com
 
 Resources:
   s3Bucket:
