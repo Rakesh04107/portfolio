@@ -87,7 +87,7 @@ Resources:
 Outputs:
   CloudFrontDomain:
     Description: The CloudFront distribution domain name.
-    Value: !GetAtt cloudFrontDistribution.DomainName
+    Value: !GetAtt frontendCloudFrontDistribution.DomainName
     Export:
       Name: !Sub "${environment}-${service}-cdn"
 
