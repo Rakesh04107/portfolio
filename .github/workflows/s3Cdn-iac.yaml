@@ -1,0 +1,40 @@
+name: Deploy Cloudformation Stack on AWS
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - DevOps/iac/s3Cdn.yaml
+      - .github/workflows/s3Cdn-iac.yaml
+
+env:
+  STAGE: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
+  BUCKET_NAME: www.1md3nd.com
+  AWS_REGION: "us-east-1"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+        
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502
+        with:
+          role-to-assume: arn:aws:iam::120569601292:role/OIDC-GitHub-Role
+          role-session-name: github-actions-session
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Create or Update the Stack
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: ${{env.STAGE}}-portfolio-stack
+          template: DevOps/iac/s3Cdn.yaml
+          parameter-overrides: "environment={{env.STAGE}},service=${{ env.BUCKET_NAME }}"

@@ -4,12 +4,14 @@ on:
   push:
     branches:
       - main
+      - dev
     paths:
       - Frontend/**
       - .github/workflows/frontend-build.yaml
 
 env:
-  BUCKET_NAME: "test-1md3nd-cloudfront-s3-bucket-1"
+  STAGE: ${{ github.ref == 'refs/heads/main' && 'main' || 'dev' }}
+  BUCKET_NAME: ${{ env.STAGE }}-1md3nd.com
   AWS_REGION: "us-east-1"
   CLOUDFRONT_DISTRIBUTION_ID: "EGLB0491BG8I7"
 
