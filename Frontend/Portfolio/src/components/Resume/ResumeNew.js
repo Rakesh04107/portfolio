@@ -4,9 +4,15 @@ import Button from "react-bootstrap/Button";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 
+// Add console logs for debugging
+console.log('Process Env:', process.env);
+console.log('REACT_APP_BRANCH:', process.env.REACT_APP_BRANCH);
+
 const branch = process.env.REACT_APP_BRANCH || 'main';
+console.log('Resolved Branch:', branch);
 
 const pdf = `https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/${branch}/Public/resume/out/default.pdf`;
+console.log('PDF URL:', pdf);
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
