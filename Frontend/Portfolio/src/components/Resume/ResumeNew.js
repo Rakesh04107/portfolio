@@ -3,10 +3,8 @@ import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
+import "dotenv/config";
 
-// Add console logs for debugging
-console.log('Process Env:', process.env);
-console.log('REACT_APP_BRANCH:', process.env.REACT_APP_BRANCH);
 
 const branch = process.env.REACT_APP_BRANCH || 'main';
 console.log('Resolved Branch:', branch);

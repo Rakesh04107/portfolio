@@ -13,11 +13,9 @@ function BlogDetail() {
   const [metadata, setMetadata] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   if (!window.Buffer) {
     window.Buffer = Buffer;
   }
-
   useEffect(() => {
     const fetchBlogContent = async () => {
       try {
@@ -28,12 +26,9 @@ function BlogDetail() {
         if (!response.ok) {
           throw new Error("Blog not found");
         }
-
         const text = await response.text();
-
         // Parse the Markdown file with gray-matter
         const { data: blogMetadata, content: blogContent } = matter(text);
-
         // Update state
         setMetadata(blogMetadata);
         setContent(blogContent);
@@ -46,10 +41,8 @@ function BlogDetail() {
         setLoading(false);
       }
     };
-
     fetchBlogContent();
   }, [blogId, content, metadata]);
-
   if (loading) {
     return (
       <div className="d-flex justify-content-center">
@@ -57,11 +50,9 @@ function BlogDetail() {
       </div>
     );
   }
-
   if (error) {
     return <Alert variant="danger">{error}</Alert>;
   }
-
   return (
     <Container
       fluid
@@ -105,5 +96,4 @@ function BlogDetail() {
     </Container>
   );
 }
-
 export default BlogDetail;

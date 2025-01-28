@@ -8,7 +8,6 @@ function BlogHome({ theme }) {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -26,10 +25,8 @@ function BlogHome({ theme }) {
         setLoading(false);
       }
     };
-
     fetchBlogs();
   }, []);
-
   return (
     <Container className="blog-section">
       {loading ? (
@@ -52,5 +49,4 @@ function BlogHome({ theme }) {
     </Container>
   );
 }
-
 export default BlogHome;
