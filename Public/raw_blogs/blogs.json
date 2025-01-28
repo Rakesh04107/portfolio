@@ -3,7 +3,7 @@
         "title": "Test Blog",
         "author": "Anurag Ranjan",
         "id": "test_blog",
-        "headerImage": "https://picsum.photos/802",
+        "headerImage": "https://picsum.photos/346",
         "time": "17 01 2025"
     },
     {
@@ -17,7 +17,7 @@
         "title": "The Impact of Social Media on Society",
         "author": "Tony Stark",
         "id": "the_impact_of_social_media_on_society",
-        "headerImage": "https://picsum.photos/730",
+        "headerImage": "https://picsum.photos/379",
         "time": "January 12, 2025"
     },
     {
@@ -31,21 +31,21 @@
         "title": "Untitled Blog",
         "author": "Anurag Ranjan",
         "id": "untitled_blog",
-        "headerImage": "https://picsum.photos/705",
+        "headerImage": "https://picsum.photos/462",
         "time": "17 01 2025"
     },
     {
         "title": "Introduction to Quantum Computing",
         "author": "James Bond",
         "id": "introduction_to_quantum_computing",
-        "headerImage": "https://picsum.photos/332",
+        "headerImage": "https://picsum.photos/737",
         "time": "January 12, 2025"
     },
     {
         "title": "To ensure high availability, we need to perform zero downtime or minimal downtime patching for this upgrade.",
         "author": "Anurag Ranjan",
         "id": "to_ensure_high_availability,_we_need_to_perform_zero_downtime_or_minimal_downtime_patching_for_this_upgrade.",
-        "headerImage": "https://picsum.photos/447",
+        "headerImage": "https://picsum.photos/128",
         "time": "17 01 2025"
     },
     {
@@ -59,28 +59,28 @@
         "title": "The Art of Mindfulness",
         "author": "Anurag Ranjan",
         "id": "the_art_of_mindfulness",
-        "headerImage": "https://picsum.photos/526",
+        "headerImage": "https://picsum.photos/972",
         "time": "17 01 2025"
     },
     {
         "title": "Sustainable Energy Solutions",
         "author": "Anurag Ranjan",
         "id": "sustainable_energy_solutions",
-        "headerImage": "https://picsum.photos/698",
+        "headerImage": "https://picsum.photos/426",
         "time": "17 01 2025"
     },
     {
         "title": "The Rise of Remote Work",
         "author": "Tony Stark",
         "id": "the_rise_of_remote_work",
-        "headerImage": "https://picsum.photos/618",
+        "headerImage": "https://picsum.photos/396",
         "time": "January 12, 2025"
     },
     {
         "title": "The Evolution of E-commerce",
         "author": "Anurag Ranjan",
         "id": "the_evolution_of_e-commerce",
-        "headerImage": "https://picsum.photos/606",
+        "headerImage": "https://picsum.photos/377",
         "time": "17 01 2025"
     }
 ]

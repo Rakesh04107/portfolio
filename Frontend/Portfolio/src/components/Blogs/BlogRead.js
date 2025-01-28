@@ -19,7 +19,6 @@ function BlogDetail() {
   useEffect(() => {
     const fetchBlogContent = async () => {
       try {
-        // Fetch the blog content including metadata
         const url = `https://raw.githubusercontent.com/1md3nd/portfolio/${branch}/Public/raw_blogs/${blogId}.md`;
         const response = await fetch(url);
 

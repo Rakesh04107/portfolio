@@ -1,6 +1,6 @@
 ---
 author: Anurag Ranjan
-headerImage: https://picsum.photos/698
+headerImage: https://picsum.photos/426
 id: sustainable_energy_solutions
 time: 17 01 2025
 title: Sustainable Energy Solutions
