@@ -1,0 +1,105 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFormation template for creating a CloudFront distribution for a custom domain.
+
+Parameters:
+  environment:
+    Type: String
+    AllowedValues:
+      - prod
+      - dev
+  service:
+    Type: String
+    Default: 'www-1md3nd-com'
+    AllowedValues:
+      - www-1md3nd-com
+
+Resources:
+  s3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${environment}-${service}-s3bucket"
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  frontendCloudfrontOAC:
+      Type: AWS::CloudFront::OriginAccessControl
+      Properties:
+        OriginAccessControlConfig:
+          Name: frontendCloudfrontOAC
+          OriginAccessControlOriginType: s3
+          SigningBehavior: always
+          SigningProtocol: sigv4
+        
+  frontendCloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Origins:
+          - Id: BucketOrigin
+            DomainName: !GetAtt s3Bucket.RegionalDomainName 
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+            OriginAccessControlId: !GetAtt frontendCloudfrontOAC.Id
+        DefaultCacheBehavior:
+          TargetOriginId: BucketOrigin
+          ViewerProtocolPolicy: redirect-to-https
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          AllowedMethods:
+            - GET
+            - HEAD
+          CachedMethods:
+            - GET
+            - HEAD
+          Compress: true
+        ViewerCertificate:
+          AcmCertificateArn: "arn:aws:acm:us-east-1:120569601292:certificate/5d5ad968-7ef3-4ed2-bb98-4ef2422cc0ef"
+          SslSupportMethod: sni-only
+        DefaultRootObject: index.html
+        PriceClass: PriceClass_100
+        CustomErrorResponses:
+          - ErrorCachingMinTTL: 10
+            ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+
+        
+  s3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref s3Bucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+              - 's3:GetObject'
+            Effect: Allow
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref s3Bucket
+                - /*
+            Principal: 
+              Service: 'cloudfront.amazonaws.com'
+            Condition:
+              StringLike:
+                AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${frontendCloudFrontDistribution}
+
+Outputs:
+  CloudFrontDomain:
+    Description: The CloudFront distribution domain name.
+    Value: !GetAtt frontendCloudFrontDistribution.DomainName
+    Export:
+      Name: !Sub "${environment}-${service}-cdn"
+
+  BucketName:
+    Value: !Ref s3Bucket
+    Description: Name of the sample Amazon S3 bucket with a logging configuration.
+    Export:
+      Name: !Sub "${environment}-${service}-s3bucket"

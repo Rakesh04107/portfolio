@@ -5,5 +5,5 @@ services:
         restart: always
         ports:
             - 3000:3000
-        # environment:
-        # - BACKEND_ENDPOINT=backend:3001
+        environment:
+        - REACT_APP_BRANCH='xyz'

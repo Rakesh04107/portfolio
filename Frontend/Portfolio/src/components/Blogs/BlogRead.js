@@ -5,33 +5,29 @@ import matter from "gray-matter";
 import { Container, Spinner, Alert, Image } from "react-bootstrap";
 import { Buffer } from "buffer";
 
+const branch = process.env.REACT_APP_BRANCH || 'main';
+
 function BlogDetail() {
   const { blogId } = useParams();
   const [content, setContent] = useState("");
   const [metadata, setMetadata] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   if (!window.Buffer) {
     window.Buffer = Buffer;
   }
-
   useEffect(() => {
     const fetchBlogContent = async () => {
       try {
-        // Fetch the blog content including metadata
-        const url = `https://raw.githubusercontent.com/1md3nd/portfolio/main/Public/raw_blogs/${blogId}.md`;
+        const url = `https://raw.githubusercontent.com/1md3nd/portfolio/${branch}/Public/raw_blogs/${blogId}.md`;
         const response = await fetch(url);
 
         if (!response.ok) {
           throw new Error("Blog not found");
         }
-
         const text = await response.text();
-
         // Parse the Markdown file with gray-matter
         const { data: blogMetadata, content: blogContent } = matter(text);
-
         // Update state
         setMetadata(blogMetadata);
         setContent(blogContent);
@@ -44,10 +40,8 @@ function BlogDetail() {
         setLoading(false);
       }
     };
-
     fetchBlogContent();
   }, [blogId, content, metadata]);
-
   if (loading) {
     return (
       <div className="d-flex justify-content-center">
@@ -55,11 +49,9 @@ function BlogDetail() {
       </div>
     );
   }
-
   if (error) {
     return <Alert variant="danger">{error}</Alert>;
   }
-
   return (
     <Container
       fluid
@@ -103,5 +95,4 @@ function BlogDetail() {
     </Container>
   );
 }
-
 export default BlogDetail;

@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import BlogCard from "./BlogCard";
 import { Row, Col, Container, Spinner, Alert } from "react-bootstrap";
 
+const branch = process.env.REACT_APP_BRANCH || 'main';
+
 function BlogHome({ theme }) {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(
-          "https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/main/Public/raw_blogs/blogs.json",
+          `https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/${branch}/Public/raw_blogs/blogs.json`,
         );
         if (!response.ok) {
           throw new Error("Failed to fetch blogs");
@@ -24,10 +25,8 @@ function BlogHome({ theme }) {
         setLoading(false);
       }
     };
-
     fetchBlogs();
   }, []);
-
   return (
     <Container className="blog-section">
       {loading ? (
@@ -50,5 +49,4 @@ function BlogHome({ theme }) {
     </Container>
   );
 }
-
 export default BlogHome;
