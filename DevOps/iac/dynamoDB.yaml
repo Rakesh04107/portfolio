@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFormation template for creating a CloudFront distribution for a custom domain.
+
+Parameters:
+  environment:
+    Type: String
+    AllowedValues:
+      - prod
+      - dev
+  service:
+    Type: String
+    AllowedValues:
+      - location
+
+Resources:
+  dynamoDB:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions: 
+      - AttributeName: session_id
+        AttributeType: S
+      - AttributeName: city
+        AttributeType: S
+      - AttributeName: country_code
+        AttributeType: S
+      - AttributeName: country_name
+        AttributeType: S
+      - AttributeName: postal
+        AttributeType: S
+      - AttributeName: latitude
+        AttributeType: N
+      - AttributeName: longitude
+        AttributeType: N
+      - AttributeName: IPv4
+        AttributeType: S
+      - AttributeName: state
+        AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      KeySchema: 
+      - AttributeName: session_id
+        KeyType: HASH
+      TableName: !Sub "${environment}-${service}-dynamodb"
+      Tags: 
+        - environment: !Sub "${environment}"
