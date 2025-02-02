@@ -40,5 +40,3 @@ Resources:
       - AttributeName: session_id
         KeyType: HASH
       TableName: !Sub "${environment}-${service}-dynamodb"
-      Tags: 
-        - Environment: !Sub "${environment}"
