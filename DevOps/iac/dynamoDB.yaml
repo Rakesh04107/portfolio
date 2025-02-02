@@ -17,26 +17,26 @@ Resources:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions: 
-      - AttributeName: session_id
-        AttributeType: S
-      - AttributeName: city
-        AttributeType: S
-      - AttributeName: country_code
-        AttributeType: S
-      - AttributeName: country_name
-        AttributeType: S
-      - AttributeName: postal
-        AttributeType: S
-      - AttributeName: latitude
-        AttributeType: N
-      - AttributeName: longitude
-        AttributeType: N
-      - AttributeName: IPv4
-        AttributeType: S
-      - AttributeName: state
-        AttributeType: S
+        - AttributeName: session_id
+          AttributeType: S
+        - AttributeName: city
+          AttributeType: S
+        - AttributeName: country_code
+          AttributeType: S
+        - AttributeName: country_name
+          AttributeType: S
+        - AttributeName: postal
+          AttributeType: S
+        - AttributeName: latitude
+          AttributeType: N
+        - AttributeName: longitude
+          AttributeType: N
+        - AttributeName: IPv4
+          AttributeType: S
+        - AttributeName: state
+          AttributeType: S
       BillingMode: PAY_PER_REQUEST
       KeySchema: 
-      - AttributeName: session_id
-        KeyType: HASH
+        - AttributeName: session_id
+          KeyType: HASH  # Partition key only, no sort key
       TableName: !Sub "${environment}-${service}-dynamodb"
