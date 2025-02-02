@@ -41,4 +41,4 @@ Resources:
         KeyType: HASH
       TableName: !Sub "${environment}-${service}-dynamodb"
       Tags: 
-        - environment: !Sub "${environment}"
+        - Environment: !Sub "${environment}"
