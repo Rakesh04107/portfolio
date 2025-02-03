@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: CloudFormation template for creating a CloudFront distribution for a custom domain.
+Description: CloudFormation template for creating a DynamoDB table for storing location data with latitude and longitude as the primary key.
 
 Parameters:
   environment:
@@ -16,15 +16,15 @@ Resources:
   dynamoDB:
     Type: AWS::DynamoDB::Table
     Properties:
-      AttributeDefinitions: 
+      AttributeDefinitions:
         - AttributeName: latitude
-          AttributeType: S
+          AttributeType: N
         - AttributeName: longitude
-          AttributeType: S
+          AttributeType: N
       BillingMode: PAY_PER_REQUEST
-      KeySchema: 
+      KeySchema:
         - AttributeName: latitude
-          KeyType: HASH
+          KeyType: HASH  # Partition key
         - AttributeName: longitude
-          KeyType: HASH
+          KeyType: RANGE  # Sort key
       TableName: !Sub "${environment}-${service}-dynamodb"
