@@ -1,10 +1,16 @@
 service: apis-for-projects
 
-frameworkVersion: '3'
-
 provider:
   name: aws
   runtime: python3.9
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+        - dynamodb:GetItem
+        - dynamodb:Scan
+      Resource:
+        - arn:aws:dynamodb:us-east-1:*:table/dev-location-dynamodb
 
 functions:
   hello:
@@ -12,34 +18,7 @@ functions:
     events:
       - httpApi:
           path: /location
-          method: post
-
-resources:
-  Resources:
-    locationTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: locationTable
-        AttributeDefinitions:
-          - AttributeName: session_id
-            AttributeType: S
-          - AttributeName: city
-            AttributeType: S
-          - AttributeName: country_code
-            AttributeType: S
-          - AttributeName: country_name
-            AttributeType: S
-          - AttributeName: postal
-            AttributeType: S
-          - AttributeName: latitude
-            AttributeType: N
-          - AttributeName: longitude
-            AttributeType: N
-          - AttributeName: IPv4
-            AttributeType: S
-          - AttributeName: state
-            AttributeType: S
-        KeySchema:
-          - AttributeName: session_id
-            KeyType: HASH
-        BillingMode: PAY_PER_REQUEST
+          method: POST
+      - httpApi:
+          path: /location
+          method: GET
