@@ -8,6 +8,7 @@ on:
     paths:
       - Frontend/**
       - .github/workflows/frontend-build.yaml
+  workflow_dispatch:
 
 env:
   AWS_REGION: "us-east-1"
