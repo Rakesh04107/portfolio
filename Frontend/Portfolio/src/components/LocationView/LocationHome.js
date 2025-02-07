@@ -19,6 +19,7 @@ import {
   Graticule,
   Sphere,
 } from "react-simple-maps";
+// import {PatternLines } from "@vx/pattern";
 
 function LocationHome() {
   const [sessionId, setSessionId] = useState("");
