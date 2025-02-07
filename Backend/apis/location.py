@@ -37,59 +37,35 @@ def handle_post(event):
 
             # Get the session_id from the event data
             session_id = event_data.get('session_id')
-            if not session_id:
-                logger.error("No 'session_id' found in the event data.")
+            latitude = event_data.get('latitude')
+            longitude = event_data.get('longitude')
+            if not latitude or not longitude:
+                logger.error("No 'latitude' or 'longitude' found in the event data.")
                 return {
                     'statusCode': 400,
-                    'body': json.dumps("Missing session_id.")
+                    'body': json.dumps("Missing 'latitude' or 'longitude'.")
                 }
 
-            # Get the other location-related data from the event
-            ipv4 = event_data.get('IPv4', '')
-            city = event_data.get('city', '')
-            country_code = event_data.get('country_code', '')
-            country_name = event_data.get('country_name', '')
-            latitude = event_data.get('latitude', 0)
-            longitude = event_data.get('longitude', 0)
-            postal = event_data.get('postal', '')
-            state = event_data.get('state', '')
+            message = event_data.get('message', '')
 
-            # Insert the full location data into the DynamoDB table
+            # Insert the full location data into DynamoDB, using latitude and longitude as the primary key
             logger.info(f"Attempting to save session_id: {session_id} and location data to DynamoDB.")
             response = client.put_item(
                 TableName='dev-location-dynamodb',
                 Item={
-                    'session_id': {
-                        'S': session_id
-                    },
-                    'IPv4': {
-                        'S': ipv4
-                    },
-                    'city': {
-                        'S': city
-                    },
-                    'country_code': {
-                        'S': country_code
-                    },
-                    'country_name': {
-                        'S': country_name
-                    },
                     'latitude': {
-                        'N': str(latitude)  # DynamoDB expects numbers as strings
+                        'N': str(latitude)  # Latitude as the partition key
                     },
                     'longitude': {
-                        'N': str(longitude)  # DynamoDB expects numbers as strings
+                        'N': str(longitude)  # Longitude as the sort key
                     },
-                    'postal': {
-                        'S': postal
-                    },
-                    'state': {
-                        'S': state
+                    'message': {
+                        'S': message
                     }
                 }
             )
 
-            logger.info(f"Successfully saved session_id: {session_id} and location data to DynamoDB.")
+            logger.info(f"Successfully saved location data to DynamoDB.")
             return {
                 'statusCode': 200,
                 'body': json.dumps('Location Saved Successfully')
@@ -116,7 +92,7 @@ def handle_get():
 
         response = client.scan(
             TableName='dev-location-dynamodb',
-            ProjectionExpression='latitude, longitude'  # Only retrieve latitude and longitude
+            ProjectionExpression='latitude, longitude, message'
         )
 
         # Extract the latitude and longitude data from the response
@@ -124,7 +100,8 @@ def handle_get():
         latitudes_longitudes = [
             {
                 'latitude': item.get('latitude', {}).get('N'),
-                'longitude': item.get('longitude', {}).get('N')
+                'longitude': item.get('longitude', {}).get('N'),
+                'message': item.get('message',{}).get('S')
             }
             for item in location_data
         ]
