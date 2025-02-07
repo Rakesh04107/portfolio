@@ -94,6 +94,11 @@ function NavbarComponent() {
                 <ImBlog style={{ marginBottom: "2px" }} /> Blogs
               </Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+              <Nav.Link as={Link} to="/location" onClick={() => setExpand(false)}>
+                <ImBlog style={{ marginBottom: "2px" }} /> Location
+              </Nav.Link>
+            </Nav.Item>
             <Nav.Item className="fork-btn">
               <Button
                 href="https://github.com/1md3nd/Portfolio"
