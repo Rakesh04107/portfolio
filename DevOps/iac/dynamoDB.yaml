@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFormation template for creating a DynamoDB table for storing location data with latitude and longitude as the primary key.
+
+Parameters:
+  environment:
+    Type: String
+    AllowedValues:
+      - prod
+      - dev
+  service:
+    Type: String
+    AllowedValues:
+      - location
+
+Resources:
+  dynamoDB:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: latitude
+          AttributeType: N
+        - AttributeName: longitude
+          AttributeType: N
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+        - AttributeName: latitude
+          KeyType: HASH  # Partition key
+        - AttributeName: longitude
+          KeyType: RANGE  # Sort key
+      TableName: !Sub "${environment}-${service}-dynamodb"

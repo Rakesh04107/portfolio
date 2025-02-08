@@ -14,6 +14,8 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
+import { FaLocationDot } from "react-icons/fa6";
+
 // import { FaMoon, FaSun } from "react-icons/fa";
 // import { useTheme } from "../context/ThemeContext"; // Import useTheme hook
 
@@ -92,6 +94,11 @@ function NavbarComponent() {
             <Nav.Item>
               <Nav.Link as={Link} to="/blog" onClick={() => setExpand(false)}>
                 <ImBlog style={{ marginBottom: "2px" }} /> Blogs
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link as={Link} to="/location" onClick={() => setExpand(false)}>
+                <FaLocationDot style={{ marginBottom: "2px" }} /> Location
               </Nav.Link>
             </Nav.Item>
             <Nav.Item className="fork-btn">
