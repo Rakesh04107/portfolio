@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Container,
   Button,
@@ -6,6 +6,7 @@ import {
   Col,
   Spinner,
   Alert,
+  Table,
   Form,
 } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
@@ -16,34 +17,30 @@ import {
   Geography,
   Marker,
   ZoomableGroup,
-  Graticule,
-  Sphere,
 } from "react-simple-maps";
-// import {PatternLines } from "@vx/pattern";
+import { MdLocationOn } from "react-icons/md";
+import { FaLocationCrosshairs } from "react-icons/fa6";
 
 function LocationHome() {
-  const [sessionId, setSessionId] = useState("");
+  const [sessionId, setSessionId] = useState(uuidv4());
   const [allLocationData, setAllLocationData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const [userMessage, setUserMessage] = useState(""); // State for storing custom message input
+  const [userMessage, setUserMessage] = useState("");
+  const [state, setState] = useState("N/A");
+  const [country, setCountry] = useState("N/A");
 
-  // Geolocation hook
-  const { coords, isGeolocationAvailable, isGeolocationEnabled } =
-    useGeolocated({
-      positionOptions: {
-        enableHighAccuracy: true, // use high accuracy for better results
-      },
-      userDecisionTimeout: 5000,
-    });
-
+  const { coords } = useGeolocated({
+    positionOptions: { enableHighAccuracy: true },
+    userDecisionTimeout: 5000,
+  });
   useEffect(() => {
     const generatedSessionId = uuidv4();
     setSessionId(generatedSessionId);
-    getLocationData();
   }, []);
 
-  const getLocationData = async () => {
+  // Fetch all location data
+  const getLocationData = useCallback(async () => {
     try {
       const response = await fetch(
         "https://2o0zalvx4i.execute-api.us-east-1.amazonaws.com/location"
@@ -60,9 +57,10 @@ function LocationHome() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const sendLocationData = async () => {
+  // Send current location data
+  const sendLocationData = useCallback(async () => {
     if (!coords) {
       setErrorMessage("Location data not available.");
       return;
@@ -80,9 +78,7 @@ function LocationHome() {
         "https://2o0zalvx4i.execute-api.us-east-1.amazonaws.com/location",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         }
       );
@@ -97,202 +93,210 @@ function LocationHome() {
       setErrorMessage("Error sending location data.");
       console.error("Error sending location data:", error);
     }
+  }, [coords, sessionId, userMessage, getLocationData]);
+
+  // Update local state based on location data
+  const updateLocalLocation = useCallback(() => {
+    if (coords && allLocationData.length > 0) {
+      const locationMatch = allLocationData.find(
+        (loc) =>
+          loc.latitude === coords.latitude.toString() &&
+          loc.longitude === coords.longitude.toString()
+      );
+
+      if (locationMatch) {
+        setUserMessage(locationMatch.message || "No message");
+        setState(locationMatch.state || "N/A");
+        setCountry(locationMatch.country || "N/A");
+      } else {
+        setState("N/A");
+        setCountry("N/A");
+      }
+    }
+  }, [coords, allLocationData]);
+
+  // Fetch location data on mount
+  useEffect(() => {
+    getLocationData();
+  }, [getLocationData]);
+
+  // Update local state when location data changes
+  useEffect(() => {
+    updateLocalLocation();
+  }, [allLocationData, coords, updateLocalLocation]);
+
+  // Check if the user's location is already stored, else send it
+  useEffect(() => {
+    if (coords && allLocationData.length > 0) {
+      const locationExists = allLocationData.some(
+        (loc) =>
+          loc.latitude === coords.latitude.toString() &&
+          loc.longitude === coords.longitude.toString()
+      );
+
+      if (!locationExists) {
+        sendLocationData();
+      }
+    }
+  }, [coords, sendLocationData, allLocationData]);
+  const highlightCurrentLocation = (loc) => {
+    if (coords && loc) {
+      return (
+        loc.latitude.toString() === coords.latitude.toString() &&
+        loc.longitude.toString() === coords.longitude.toString()
+      );
+    }
+    return false;
   };
-
   return (
-    <Container fluid className="project-section" style={{ color: "white" }}>
-      <Container
-        fluid
-        className="location-content"
-        style={{ background: "#343a40", padding: "10px" }}
-      >
-        <h1>Location Data</h1>
+    <Container
+      fluid
+      className="text-white"
+      style={{ paddingTop: "100px", paddingBottom: "70px" }}
+    >
+      <h1 className="project-heading">
+        <strong className="purple">Location</strong> Game
+      </h1>
+
+      <Container fluid style={{ paddingTop: "50px", position: "relative" }}>
+        {loading && <Spinner animation="border" variant="dark" />}
+        {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+
         <Row>
-          <Col>
-            {/* Show spinner while loading location data */}
-            {loading && (
-              <Spinner animation="border" role="status" variant="light">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            )}
-
-            {/* Show error message if there's an issue */}
-            {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-
-            {/* Handle geolocation availability */}
-            {!isGeolocationAvailable ? (
-              <div>Your browser does not support Geolocation</div>
-            ) : !isGeolocationEnabled ? (
-              <div>Geolocation is not enabled</div>
-            ) : coords ? (
-              <div className="mb-4" text="white" bg="dark" background="#343a40">
-                <Row>
-                  <Col>
-                    <h2>Your Coordinates:</h2>
-                  </Col>
-                  <Col>
-                    Latitude: {coords.latitude} <br />
-                    Longitude: {coords.longitude}
-                  </Col>
-                </Row>
-              </div>
-            ) : (
-              <div>Getting the location data…</div>
-            )}
-
-            {/* Input for the user to enter a custom message */}
-            <Form.Group controlId="userMessage" className="mb-4">
-              <Form.Control
-                type="text"
-                placeholder="Enter your custom message"
-                value={userMessage}
-                onChange={(e) => setUserMessage(e.target.value)} // Update the state with the input value
-                style={{
-                  fontSize: "1rem",
-                  padding: "15px",
-                  borderRadius: "8px",
-                  border: "1px solid #ccc",
-                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                  transition: "0.3s",
-                }}
-              />
-            </Form.Group>
-
-            {/* Button to send location data */}
-            <Button
-              variant="primary"
-              onClick={sendLocationData}
-              style={{
-                fontSize: "1.2rem",
-                padding: "12px 30px",
-                borderRadius: "50px",
-                background: "linear-gradient(to right, #6a11cb, #2575fc)",
-                border: "none",
-                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-                transition: "0.3s",
-              }}
-              onMouseEnter={(e) =>
-                (e.target.style.background =
-                  "linear-gradient(to right, #2575fc, #6a11cb)")
-              }
-              onMouseLeave={(e) =>
-                (e.target.style.background =
-                  "linear-gradient(to right, #6a11cb, #2575fc)")
-              }
-            >
-              Add my Message
-            </Button>
+          {/* Coordinates Section */}
+          <Col md={6}>
+            <div className="card p-3 shadow-sm">
+              <h3>Your Place:</h3>
+              {state && (
+                <p>
+                  <strong>State:</strong> {state} <br />
+                  <strong>Country:</strong> {country}
+                </p>
+              )}
+              <Form.Group controlId="userMessage">
+                <Form.Label>Enter a message:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter your message here"
+                  value={userMessage}
+                  onChange={(e) => setUserMessage(e.target.value)}
+                  className="mb-3"
+                />
+              </Form.Group>
+              <Button onClick={sendLocationData} className="w-100">
+                Add my Message
+              </Button>
+            </div>
           </Col>
-          <Col>
-            <h2>Total Counts</h2>
-            <div>
-              <h3 style={{ color: "#F0F0F0" }}>{allLocationData.length}</h3>
+
+          {/* Data Table Section */}
+          <Col md={6}>
+            <div className="card p-3 shadow-sm">
+              <h3>Total Entries: {allLocationData.length}</h3>
+              <Table
+                striped
+                bordered
+                hover
+                variant="dark"
+                responsive
+                className="mt-3"
+              >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Message</th>
+                    <th>State</th>
+                    <th>Country</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {allLocationData.slice(0, 7).map((loc, index) => (
+                    <tr
+                      key={index}
+                      className={
+                        highlightCurrentLocation(loc) ? "table-light" : ""
+                      }
+                    >
+                      <td>{index + 1}</td>
+                      <td>{loc.message || "No message"}</td>
+                      <td>{loc.state || "N/A"}</td>
+                      <td>{loc.country || "N/A"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
             </div>
           </Col>
         </Row>
       </Container>
-
-      <Container
-        fluid
-        className="location-map-section"
-        style={{ padding: "40px" }}
-      >
-        <ComposableMap projection="geoEqualEarth">
-          <Sphere stroke="#DDD" />
-          <Graticule stroke="#DDD" />
-          <ZoomableGroup center={[20, 0]} zoom={1}>
-            <Geographies
-              geography="/features.json"
-              stroke="#FFF"
-              strokeWidth={0.5}
+      {coords && (
+        <Container
+          className="mt-4"
+          style={{
+            maxHeight: "1000px",
+            maxWidth: "none",
+            paddingRight: "70px",
+            border: "1px solid rgb(255, 255, 255)",
+          }}
+        >
+          <ComposableMap
+            projectionConfig={{
+              scale: 205,
+              rotation: [-101, 0, 0],
+            }}
+            width={900}
+            height={400}
+          >
+            <ZoomableGroup
+              center={[coords.longitude, coords.latitude]}
+              zoom={1.5}
             >
-              {({ geographies }) =>
-                geographies.map((geo) => (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    stroke="white"
-                    style={{
-                      default: {
-                        fill: "#428197",
-                        outline: "none",
-                      },
-                      hover: {
-                        fill: "#F53",
-                        outline: "none",
-                      },
-                      pressed: {
-                        outline: "none",
-                      },
-                    }}
-                  />
-                ))
-              }
-            </Geographies>
-
-            {/* All locations saved */}
-            {allLocationData.length > 0
-              ? allLocationData.map((location, index) => (
-                  <Marker
-                    key={index}
-                    coordinates={[location.longitude, location.latitude]}
-                  >
-                    <circle r={0.5} fill="#000000" />
-                    <text
-                      textAnchor="middle"
-                      y={-8}
+              <Geographies
+                geography="/features.json"
+                stroke="#FFF"
+                strokeWidth={0.3}
+              >
+                {({ geographies }) =>
+                  geographies.map((geo) => (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
                       style={{
-                        fontSize: 8,
-                        fontFamily: "Arial",
-                        backgroundColor: '#FFFF00', // Add a background color to all texts
-                        fill: "#000000",
-                        padding: "2px",
-                        borderRadius: "3px",
+                        default: { fill: "#428197", outline: "none" },
+                        hover: { fill: "whitesmoke", outline: "none" },
                       }}
-                      >
-                      {location.message}
-                    </text>
-                  </Marker>
-                ))
-              : null}
+                    />
+                  ))
+                }
+              </Geographies>
 
-            {/* Current User */}
-            {coords ? (
+              {allLocationData.map((location, index) => (
+                <Marker
+                  key={index}
+                  coordinates={[location.longitude, location.latitude]}
+                >
+                  <g transform="translate(-5, -10)">
+                    <MdLocationOn size={10} color="black" />
+                  </g>
+                </Marker>
+              ))}
+
               <Marker coordinates={[coords.longitude, coords.latitude]}>
-                <circle r={1} fill="#FFFF00" />
+                <g transform="translate(-3.5, -3.5)">
+                  <FaLocationCrosshairs size={7} color="yellow" />
+                </g>
                 <text
                   textAnchor="middle"
-                  y={-8} // Adjust the y value to position the text above/below the marker
-                  style={{
-                    fontSize: 8,
-                    fontFamily: "Arial",
-                    fill: "#FFFF00",
-                    padding: "2px",
-                    borderRadius: "3px",
-                  }}
+                  dy={-15} // Adjusts text position above the icon
+                  style={{ fontSize: "5px", fill: "#FFFF00" }}
                 >
-                  {userMessage}
-                </text>
-                <text
-                  textAnchor="middle"
-                  y={8} // Adjust the y value to position the text above/below the marker
-                  style={{
-                    fontSize: 5, // Smaller font size for subtlety
-                    fontFamily: "Arial",
-                    fill: "#575757",
-                    opacity: 0.7, // Reduce opacity for a softer look
-                    padding: "2px",
-                    borderRadius: "3px",
-                    boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)", // Soft text shadow for legibility
-                  }}
-                >
-                  {"You r here."}
+                  {"You are here"}
                 </text>
               </Marker>
-            ) : null}
-          </ZoomableGroup>
-        </ComposableMap>
-      </Container>
+            </ZoomableGroup>
+          </ComposableMap>
+        </Container>
+      )}
     </Container>
   );
 }

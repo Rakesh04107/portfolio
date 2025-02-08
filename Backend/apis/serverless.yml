@@ -2,15 +2,17 @@ service: apis-for-projects
 
 provider:
   name: aws
-  runtime: python3.9
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:PutItem
-        - dynamodb:GetItem
-        - dynamodb:Scan
-      Resource:
-        - arn:aws:dynamodb:us-east-1:*:table/dev-location-dynamodb
+  runtime: python3.10
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:PutItem
+            - dynamodb:GetItem
+            - dynamodb:Scan
+          Resource:
+            - arn:aws:dynamodb:us-east-1:*:table/dev-location-dynamodb
 
 functions:
   hello:
@@ -22,3 +24,6 @@ functions:
       - httpApi:
           path: /location
           method: GET
+
+plugins:
+  - serverless-python-requirements
