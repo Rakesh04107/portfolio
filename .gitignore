@@ -1,2 +1,3 @@
 .venv
 Backend/apis/.serverless
+# Backend/apis/node_modules
