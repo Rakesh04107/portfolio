@@ -1,0 +1,39 @@
+.sketch{
+        height: var(--baseline-10x);
+        overflow: hidden;;
+        display: flex;
+        justify-content: space-evenly;
+}
+.verticalButtons{
+        display: flex;
+        flex-direction: column;
+}
+.btn_text{
+        display: flex;
+        flex-wrap: wrap;
+        height: var(--baseline-2x);
+        border-bottom: var(--border);
+        border-right: var(--border);
+        
+}
+.btn_text p{
+        padding-left: 20px;
+}
+.btn_text img{
+        aspect-ratio: 5/4;
+        width: 80%;
+}
+.canvascar{
+height: var(--baseline-10x);
+border-right: var(--border);
+border-left: var(--border);
+
+}
+@media (max-width: 1024px) {
+
+}
+@media (max-width: 1000px) {
+        .network{
+                display: none;
+        }
+}

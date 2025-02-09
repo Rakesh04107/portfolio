@@ -2,12 +2,13 @@ import json
 import boto3
 import logging
 import requests
-
+import datetime
+from datetime import tzinfo
 # Set up the logger
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)  # Adjust as needed
 
-# Initialize DynamoDB client
+# # Initialize DynamoDB client
 client = boto3.client('dynamodb')
 
 def lambda_handler(event, context):
@@ -74,12 +75,14 @@ def handle_post(event):
 
         # Fetch location details
         location_details = get_location_details(latitude, longitude)
+        current_time = int(datetime.datetime.now(tz=datetime.timezone.utc).timestamp())
 
         # Insert into DynamoDB
         logger.info(f"Saving location details to DynamoDB: {location_details}")
         client.put_item(
             TableName='dev-location-dynamodb',
             Item={
+                'timestamp': {'N': str(current_time)},
                 'latitude': {'N': str(latitude)},
                 'longitude': {'N': str(longitude)},
                 'message': {'S': message},
@@ -102,13 +105,14 @@ def handle_get():
 
         response = client.scan(
             TableName='dev-location-dynamodb',
-            ProjectionExpression='latitude, longitude, message, road, suburb, #state, #country',
-            ExpressionAttributeNames = {'#state': 'state','#country':'country'}
+            ProjectionExpression='#timestamp, latitude, longitude, message, road, suburb, #state, #country',
+            ExpressionAttributeNames = {'#timestamp':'timestamp','#state': 'state','#country':'country'}
         )
         print(response['Items'])
         # Extract the data
         locations = [
             {
+                'timestamp': item.get('timestamp',{}).get('N'),
                 'latitude': item.get('latitude', {}).get('N'),
                 'longitude': item.get('longitude', {}).get('N'),
                 'message': item.get('message', {}).get('S'),
@@ -126,3 +130,12 @@ def handle_get():
     except Exception as e:
         logger.error(f"Error retrieving location data: {str(e)}")
         return {'statusCode': 500, 'body': json.dumps('Error retrieving location data')}
+
+
+if __name__ == "__main__":
+    post_event = {'body':{
+        'latitude':0,
+        'longitude':0,
+        'message':''
+    }}
+    handle_post(json.dumps(post_event))

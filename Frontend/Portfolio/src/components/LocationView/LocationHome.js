@@ -20,6 +20,7 @@ import {
 } from "react-simple-maps";
 import { MdLocationOn } from "react-icons/md";
 import { FaLocationCrosshairs } from "react-icons/fa6";
+import { formatDistanceToNow } from "date-fns";
 
 function LocationHome() {
   const [sessionId, setSessionId] = useState(uuidv4());
@@ -50,7 +51,12 @@ function LocationHome() {
           `Failed to fetch location data: ${response.statusText}`
         );
       const data = await response.json();
-      setAllLocationData(data);
+      const sortedData = [...data].sort((a, b) => {
+        const timestampA = parseInt(a.timestamp, 10);
+        const timestampB = parseInt(b.timestamp, 10);
+        return timestampB - timestampA; // Descending order
+      });
+      setAllLocationData(sortedData);
     } catch (error) {
       setErrorMessage("Error fetching all location data.");
       console.error("Error fetching location data:", error);
@@ -139,12 +145,20 @@ function LocationHome() {
       }
     }
   }, [coords, sendLocationData, allLocationData]);
+
   const highlightCurrentLocation = (loc) => {
     if (coords && loc) {
-      return (
-        loc.latitude.toString() === coords.latitude.toString() &&
-        loc.longitude.toString() === coords.longitude.toString()
-      );
+      const lat1 = parseFloat(loc.latitude);
+      const lng1 = parseFloat(loc.longitude);
+      const lat2 = coords.latitude;
+      const lng2 = coords.longitude;
+  
+      const latDiff = Math.abs(lat1 - lat2);
+      const lngDiff = Math.abs(lng1 - lng2);
+  
+      const tolerance = 0.0001; // Adjust as needed
+  
+      return latDiff < tolerance && lngDiff < tolerance;
     }
     return false;
   };
@@ -154,9 +168,7 @@ function LocationHome() {
       className="text-white"
       style={{ paddingTop: "100px", paddingBottom: "70px" }}
     >
-      <h1 className="project-heading">
-        <strong className="purple">Location</strong> Game
-      </h1>
+     
 
       <Container fluid style={{ paddingTop: "50px", position: "relative" }}>
         {loading && <Spinner animation="border" variant="dark" />}
@@ -193,38 +205,85 @@ function LocationHome() {
           <Col md={6}>
             <div className="card p-3 shadow-sm">
               <h3>Total Entries: {allLocationData.length}</h3>
-              <Table
-                striped
-                bordered
-                hover
-                variant="dark"
-                responsive
-                className="mt-3"
+              <div
+                style={{
+                  maxHeight: "calc(8 * 41px)",
+                  padding: "0",
+                  overflowY: "auto",
+                }}
               >
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Message</th>
-                    <th>State</th>
-                    <th>Country</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allLocationData.slice(0, 7).map((loc, index) => (
-                    <tr
-                      key={index}
-                      className={
-                        highlightCurrentLocation(loc) ? "table-light" : ""
-                      }
-                    >
-                      <td>{index + 1}</td>
-                      <td>{loc.message || "No message"}</td>
-                      <td>{loc.state || "N/A"}</td>
-                      <td>{loc.country || "N/A"}</td>
+                <Table
+                  bordered
+                  hover
+                  variant="dark"
+                  responsive
+                  className=""
+                >
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>When</th>
+                      <th>Message</th>
+                      <th>State</th>
+                      <th>Country</th>
                     </tr>
-                  ))}
-                </tbody>
-              </Table>
+                  </thead>
+                  <tbody>
+                    {allLocationData.map((loc, index) => {
+                      const isHighlighted = highlightCurrentLocation(loc);
+                      const timestamp = formatDistanceToNow(
+                        new Date(parseInt(loc.timestamp, 10) * 1000),
+                        { addSuffix: true }
+                      );
+                      var bColor = "";
+                      if (isHighlighted) {
+                        bColor = "var(--imp-text-color)";
+                      }
+                      return (
+                        <tr key={index} className={
+                          isHighlighted ? "text-light": ""
+                        }>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {index + 1}
+                          </td>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {timestamp}
+                          </td>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {loc.message || "No message"}
+                          </td>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {loc.state || "N/A"}
+                          </td>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {loc.country || "N/A"}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </Table>
+              </div>
             </div>
           </Col>
         </Row>
