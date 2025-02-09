@@ -141,6 +141,7 @@ function LocationHome() {
   }, [coords, sendLocationData, allLocationData]);
   const highlightCurrentLocation = (loc) => {
     if (coords && loc) {
+      console.log('Match found');
       return (
         loc.latitude.toString() === coords.latitude.toString() &&
         loc.longitude.toString() === coords.longitude.toString()
@@ -193,38 +194,72 @@ function LocationHome() {
           <Col md={6}>
             <div className="card p-3 shadow-sm">
               <h3>Total Entries: {allLocationData.length}</h3>
-              <Table
-                striped
-                bordered
-                hover
-                variant="dark"
-                responsive
-                className="mt-3"
+              <div
+                style={{
+                  maxHeight: "calc(8 * 41px)",
+                  padding: "0",
+                  overflowY: "auto",
+                }}
               >
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Message</th>
-                    <th>State</th>
-                    <th>Country</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allLocationData.slice(0, 7).map((loc, index) => (
-                    <tr
-                      key={index}
-                      className={
-                        highlightCurrentLocation(loc) ? "table-light" : ""
-                      }
-                    >
-                      <td>{index + 1}</td>
-                      <td>{loc.message || "No message"}</td>
-                      <td>{loc.state || "N/A"}</td>
-                      <td>{loc.country || "N/A"}</td>
+                <Table
+                  striped
+                  bordered
+                  hover
+                  variant="dark"
+                  responsive
+                  className=""
+                >
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Message</th>
+                      <th>State</th>
+                      <th>Country</th>
                     </tr>
-                  ))}
-                </tbody>
-              </Table>
+                  </thead>
+                  <tbody>
+                    {allLocationData.map((loc, index) => {
+                      const isHighlighted = highlightCurrentLocation(loc);
+                      var bColor = "";
+                      if (isHighlighted) {
+                        bColor = "var(--imp-text-color)";
+                      }
+                      return (
+                        <tr key={index}>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {index + 1}
+                          </td>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {loc.message || "No message"}
+                          </td>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {loc.state || "N/A"}
+                          </td>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {loc.country || "N/A"}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </Table>
+              </div>
             </div>
           </Col>
         </Row>
