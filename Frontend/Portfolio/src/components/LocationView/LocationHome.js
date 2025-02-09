@@ -168,9 +168,7 @@ function LocationHome() {
       className="text-white"
       style={{ paddingTop: "100px", paddingBottom: "70px" }}
     >
-      <h1 className="project-heading">
-        <strong className="purple">Location</strong> Game
-      </h1>
+     
 
       <Container fluid style={{ paddingTop: "50px", position: "relative" }}>
         {loading && <Spinner animation="border" variant="dark" />}
