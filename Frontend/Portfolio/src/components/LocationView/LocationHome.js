@@ -20,6 +20,7 @@ import {
 } from "react-simple-maps";
 import { MdLocationOn } from "react-icons/md";
 import { FaLocationCrosshairs } from "react-icons/fa6";
+import { formatDistanceToNow } from "date-fns";
 
 function LocationHome() {
   const [sessionId, setSessionId] = useState(uuidv4());
@@ -50,7 +51,12 @@ function LocationHome() {
           `Failed to fetch location data: ${response.statusText}`
         );
       const data = await response.json();
-      setAllLocationData(data);
+      const sortedData = [...data].sort((a, b) => {
+        const timestampA = parseInt(a.timestamp, 10);
+        const timestampB = parseInt(b.timestamp, 10);
+        return timestampB - timestampA; // Descending order
+      });
+      setAllLocationData(sortedData);
     } catch (error) {
       setErrorMessage("Error fetching all location data.");
       console.error("Error fetching location data:", error);
@@ -139,13 +145,20 @@ function LocationHome() {
       }
     }
   }, [coords, sendLocationData, allLocationData]);
+
   const highlightCurrentLocation = (loc) => {
     if (coords && loc) {
-      console.log('Match found');
-      return (
-        loc.latitude.toString() === coords.latitude.toString() &&
-        loc.longitude.toString() === coords.longitude.toString()
-      );
+      const lat1 = parseFloat(loc.latitude);
+      const lng1 = parseFloat(loc.longitude);
+      const lat2 = coords.latitude;
+      const lng2 = coords.longitude;
+  
+      const latDiff = Math.abs(lat1 - lat2);
+      const lngDiff = Math.abs(lng1 - lng2);
+  
+      const tolerance = 0.0001; // Adjust as needed
+  
+      return latDiff < tolerance && lngDiff < tolerance;
     }
     return false;
   };
@@ -202,7 +215,6 @@ function LocationHome() {
                 }}
               >
                 <Table
-                  striped
                   bordered
                   hover
                   variant="dark"
@@ -212,6 +224,7 @@ function LocationHome() {
                   <thead>
                     <tr>
                       <th>#</th>
+                      <th>When</th>
                       <th>Message</th>
                       <th>State</th>
                       <th>Country</th>
@@ -220,18 +233,31 @@ function LocationHome() {
                   <tbody>
                     {allLocationData.map((loc, index) => {
                       const isHighlighted = highlightCurrentLocation(loc);
+                      const timestamp = formatDistanceToNow(
+                        new Date(parseInt(loc.timestamp, 10) * 1000),
+                        { addSuffix: true }
+                      );
                       var bColor = "";
                       if (isHighlighted) {
                         bColor = "var(--imp-text-color)";
                       }
                       return (
-                        <tr key={index}>
+                        <tr key={index} className={
+                          isHighlighted ? "text-light": ""
+                        }>
                           <td
                             style={{
                               backgroundColor: bColor,
                             }}
                           >
                             {index + 1}
+                          </td>
+                          <td
+                            style={{
+                              backgroundColor: bColor,
+                            }}
+                          >
+                            {timestamp}
                           </td>
                           <td
                             style={{
