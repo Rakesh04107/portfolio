@@ -1,0 +1,211 @@
+\documentclass[letterpaper,10pt]{article}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+
+% Sans-Serif
+\usepackage[default]{sourcesanspro}
+
+% Colors
+\usepackage{xcolor}
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% Custom Commands
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\color{accentTitle} #1}
+    \vspace{10pt}
+    {\color{accentLine} \hrule}
+    \vspace{2pt}
+    \footnotesize{#2}
+    \vspace{2pt}
+    {\color{accentLine} \hrule}
+  \end{center}
+}
+
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+\titleformat{\section}{
+  \vspace{-5pt}
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+\newcommand{\heading}[2]{
+  \hspace{10pt}#1\hfill#2\\
+}
+
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+}
+
+\newenvironment{resume_list}{
+  \vspace{-7pt}
+  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+}{
+  \end{itemize}
+}
+
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+\renewcommand\labelitemi{--}
+
+\begin{document}
+
+% Heading
+\documentTitle{\href{https://1md3nd.com}{Anurag Ranjan}}{
+  \href{mailto:anurag.ranjan@impressico.com}{\raisebox{-0.15\height} 
+  \faEnvelope\ anurag.ranjan@impressico.com} ~ | ~
+  \href{https://linkedin.com/in/1md3nd}{\raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/1md3nd} ~ | ~
+  \href{https://github.com/1md3nd}{\raisebox{-0.15\height} \faGithub\ github.com/1md3nd} ~ | ~
+  Bengaluru
+}
+% Summary
+\tinysection{Summary}
+DevOps enthusiast with hands-on experience in cloud technologies, infrastructure as code, and CI/CD pipelines. Experienced in Python, Shell Scripting, AWS, Docker, Kubernetes, and more. Proven ability to solve complex problems, manage projects and deliver results.
+
+% Skills
+\section{Skills}
+\begin{multicols}{2}
+  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
+    \item[\textbf{Programming}] Python, Shell Scripting, Node.js
+    \item[\textbf{Cloud}] AWS, CloudFormation
+    \item[\textbf{DevOps}] Jenkins, Prometheus, Grafana
+    \item[\textbf{Containers}] Docker, Kubernetes
+    \item[\textbf{Databases}] MySQL, MongoDB, Elasticsearch
+    \item[\textbf{Tools}] Terraform, Ansible
+  \end{itemize}
+\end{multicols}
+
+% Experience
+\section{Experience}
+
+\headingBf{\href {https://www.impressico.com}{Impressico Business Solutions}}{Jan 2024 -- Present}  
+\headingIt{Devops Trainee Engineer}{}  
+\begin{resume_list}  
+  \item Assisted in implementing and maintaining CI/CD pipelines to streamline deployments.  
+  \item Supported automation of infrastructure provisioning using Terraform and CloudFormation.  
+  \item Real-time monitoring solutions were configured with Prometheus and Grafana to enhance system reliability.  
+  \item Collaborated with senior engineers to troubleshoot deployment and infrastructure issues.
+  \item Conducted root cause analysis (RCA) for production issues, providing detailed insight to improve system stability.
+\end{resume_list}
+
+
+\headingBf{\href{https://www.healthcart.com}{HealthKart}}{Jan 2023 -- July 2023} 
+\headingIt{\href {https://drive.google.com/file/d/1Iz83NKtrG7A1KG_rK0P8s_sAquzRm_OY/view?usp=sharing}{Software Development Engineer Intern}}{}
+\begin{resume_list}
+  \item Supported the development and testing of RESTful APIs, improving back-end functionality.
+  \item Collaborated with team members during debugging and troubleshooting sessions to improve system reliability.  
+  \item Participated in code reviews and team meetings to understand project workflows and improve coding standards.  
+\end{resume_list}
+
+
+% Education
+\section{Education}
+
+\headingBf{KIET Group of Institutions}{2019 -- 2023}
+\headingIt{Bachelor of Technology in Information Technology}{CGPA: 8.14}
+
+% Certifications
+\section{Certifications}
+\begin{resume_list}  
+
+\item \headingBf{\href {https://www.coursera.org/account/accomplishments/verify/VAXY9EEWXD3C}{Introduction to Git and GitHub}}{}
+
+\item \headingBf{\href {https://www.coursera.org/account/accomplishments/verify/MEHYBBVAYE8E}{Data Structures and Performance}}{}
+
+\item \headingBf{\href {https://www.coursera.org/account/accomplishments/verify/R73VUS4L44RN}{Palo Alto Networks Academy Cybersecurity Foundation}}{}
+
+\item \headingBf{\href {https://drive.google.com/file/d/15n4G1_3d75gbxfikhzodotRZVXInxqhJ/view?usp=sharing}{CCNAv7: Introduction to Networks}}{}
+\end{resume_list}
+
+% Projects
+\section{Projects}
+
+\headingBf{Kubernetes The Hard Way}{}
+\begin{resume_list}
+  \item Implemented Kubernetes clusters from scratch following best practices.
+  \item Gained in-depth knowledge of Kubernetes internals and deployment strategies.
+\end{resume_list}
+
+\headingBf{\href {https://github.com/1md3nd/portfolio}{Serverless Full-Stack Portfolio with Automated DevOps Lifecycle}}{}
+\begin{resume_list}
+  \item Deployed a serverless portfolio website using S3, CDN, DynamoDB, Lambda, and API Gateway for dynamic content delivery.
+  \item Automated infrastructure provisioning and deployment pipelines with AWS CloudFormation and GitHub Actions.
+  \item Delivered a fully automated, scalable application that demonstrates expertise in serverless architecture and DevOps practices.
+
+\end{resume_list}
+
+% Achievements
+\section{Achievements}
+\headingBf{KIET Codechef Chapter Executive Member}{}
+\begin{resume_list}
+\item Organized and managed coding events, promoting competitive programming and student engagement.
+\end{resume_list}
+
+\headingBf{\href {https://www.leetcode.com/1md3nd}{Leetcode} and Codechef Success}{}
+\begin{resume_list}
+\item Solved more than 600 problems on Leetcode, demonstrating strong problem solving and algorithm skills.
+\end{resume_list}
+
+\headingBf{Postman API Student Expert}{}
+\begin{resume_list}
+\item Achieved distinction in API design and testing using Postman.
+\end{resume_list}
+\end{document}
