@@ -1,0 +1,29 @@
+/* src/components/CustomCursor/CustomCursor.css */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--cursor-color);
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+    transition: transform 0.1s;
+  }
+  
+  .cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--cursor-color);
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+    transition: transform 0.2s ease-out;
+    transform: translate(-50%, -50%);
+  }
+  
+  .cursor-hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: var(--cursor-color-hover);
+    mix-blend-mode: difference;
+  }
