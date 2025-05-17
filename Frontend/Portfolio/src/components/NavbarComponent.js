@@ -14,15 +14,13 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
-import { FaLocationDot } from "react-icons/fa6";
-
-// import { FaMoon, FaSun } from "react-icons/fa";
-// import { useTheme } from "../context/ThemeContext"; // Import useTheme hook
+import { FaLocationDot, FaMoon, FaSun } from "react-icons/fa6";
+import { useTheme } from "../context/ThemeContext"; // Import useTheme hook
 
 function NavbarComponent() {
   const [expand, setExpand] = useState(false);
   const [navColour, setNavColour] = useState(false);
-  // const { theme, setTheme } = useTheme(); // Use theme from context
+  const { isDark, toggleTheme } = useTheme(); // Use theme from context
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -38,10 +36,6 @@ function NavbarComponent() {
       window.removeEventListener("scroll", scrollHandler);
     };
   }, []);
-
-  // const toggleTheme = () => {
-  //   setTheme(theme === "light-theme" ? "dark-theme" : "light-theme"); // Toggle theme
-  // };
 
   return (
     <Navbar
@@ -111,11 +105,11 @@ function NavbarComponent() {
                 <AiFillStar style={{ fontSize: "1.1em" }} />
               </Button>
             </Nav.Item>
-            {/* <Nav.Item style={{marginTop:"auto",marginBottom:"auto"}} >
-            <Button variant="outline-secondary" onClick={toggleTheme}>
-              {theme === "light-theme" ? <FaMoon /> : <FaSun />}
-            </Button>
-            </Nav.Item> */}
+            <Nav.Item className="theme-toggle">
+              <Button variant="outline-secondary" onClick={toggleTheme}>
+                {isDark ? <FaSun /> : <FaMoon />}
+              </Button>
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>

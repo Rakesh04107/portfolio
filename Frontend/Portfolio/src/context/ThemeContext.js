@@ -1,38 +1,54 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+// src/context/ThemeContext.jsx
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Create a Context
 const ThemeContext = createContext();
 
-// ThemeProvider component to wrap around your app
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light"); // Default theme is light
+  const [isDark, setIsDark] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? savedTheme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
-  // On initial load, check if there's a stored theme in localStorage
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme); // Set the theme from localStorage
-    }
-  }, []);
+  const toggleTheme = () => setIsDark((prev) => !prev);
 
-  // Update the body class whenever the theme changes
+  const colors = {
+    light: {
+      background: '#ffffff',
+      text: '#1a1a1a',
+      primary: '#007AFF',
+      secondary: '#6c757d',
+      accent: '#0056b3',
+      cursorColor: '#007AFF',
+      cursorHover: 'rgba(0, 122, 255, 0.2)',
+    },
+    dark: {
+      background: '#121212',
+      text: '#ffffff',
+      primary: '#0A84FF',
+      secondary: '#6c757d',
+      accent: '#409CFF',
+      cursorColor: '#0A84FF',
+      cursorHover: 'rgba(10, 132, 255, 0.2)',
+    },
+  };
+
   useEffect(() => {
-    document.body.className = theme;
-    localStorage.setItem("theme", theme); // Save the theme to localStorage
-  }, [theme]);
+    const root = document.documentElement;
+    const theme = isDark ? 'dark' : 'light';
+    const themeColors = colors[theme];
+
+    Object.entries(themeColors).forEach(([key, value]) => {
+      root.style.setProperty(`--${key}`, value);
+    });
+
+    localStorage.setItem('theme', theme);
+  }, [isDark]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ isDark, setIsDark, toggleTheme, colors }}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
-// Custom hook to use the ThemeContext
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-};
+export const useTheme = () => useContext(ThemeContext);

@@ -1,0 +1,50 @@
+/* src/styles/global.css */
+:root {
+    /* Theme variables will be set by ThemeContext */
+    --transition-speed: 0.3s;
+    --border-radius: 8px;
+    --container-width: 1200px;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--text);
+    transition: background-color var(--transition-speed),
+                color var(--transition-speed);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    cursor: none; /* Hide default cursor */
+  }
+  
+  /* Hide cursor on interactive elements */
+  a, button, [role="button"] {
+    cursor: none;
+  }
+  
+  /* Minimalist button style */
+  .btn {
+    background: var(--primary);
+    color: var(--background);
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius);
+    transition: transform 0.2s, background 0.2s;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    background: var(--accent);
+  }
+  
+  /* Tech-focused card style */
+  .card {
+    background: var(--background);
+    border: 1px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
