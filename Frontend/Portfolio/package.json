@@ -39,7 +39,7 @@
     "redux": "^5.0.1",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
-    "styled-components": "^6.1.17",
+    "styled-components": "^6.1.18",
     "uuid": "^11.0.5",
     "vx": "^0.0.1",
     "web-vitals": "^4.2.4"
