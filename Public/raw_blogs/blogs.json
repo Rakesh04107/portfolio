@@ -1,14 +1,14 @@
 [
     {
         "title": "Test Blog",
-        "author": "Anurag Ranjan",
+        "author": "Rakesh Singh",
         "id": "test_blog",
         "headerImage": "https://picsum.photos/346",
         "time": "17 01 2025"
     },
     {
         "title": "Helm Chart Demo",
-        "author": "Anurag Ranjan",
+        "author": "Rakesh Singh",
         "id": "helm_chart_demo",
         "headerImage": "https://picsum.photos/342",
         "time": "18 01 2025"
@@ -29,7 +29,7 @@
     },
     {
         "title": "Untitled Blog",
-        "author": "Anurag Ranjan",
+        "author": "Rakesh Singh",
         "id": "untitled_blog",
         "headerImage": "https://picsum.photos/462",
         "time": "17 01 2025"
@@ -43,7 +43,7 @@
     },
     {
         "title": "To ensure high availability, we need to perform zero downtime or minimal downtime patching for this upgrade.",
-        "author": "Anurag Ranjan",
+        "author": "Rakesh Singh",
         "id": "to_ensure_high_availability,_we_need_to_perform_zero_downtime_or_minimal_downtime_patching_for_this_upgrade.",
         "headerImage": "https://picsum.photos/128",
         "time": "17 01 2025"
@@ -57,14 +57,14 @@
     },
     {
         "title": "The Art of Mindfulness",
-        "author": "Anurag Ranjan",
+        "author": "Rakesh Singh",
         "id": "the_art_of_mindfulness",
         "headerImage": "https://picsum.photos/972",
         "time": "17 01 2025"
     },
     {
         "title": "Sustainable Energy Solutions",
-        "author": "Anurag Ranjan",
+        "author": "Rakesh Singh",
         "id": "sustainable_energy_solutions",
         "headerImage": "https://picsum.photos/426",
         "time": "17 01 2025"
@@ -78,7 +78,7 @@
     },
     {
         "title": "The Evolution of E-commerce",
-        "author": "Anurag Ranjan",
+        "author": "Rakesh Singh",
         "id": "the_evolution_of_e-commerce",
         "headerImage": "https://picsum.photos/377",
         "time": "17 01 2025"

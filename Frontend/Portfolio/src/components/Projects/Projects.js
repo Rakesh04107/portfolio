@@ -1,7 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import ProjectCard from "./ProjectCards"; // Corrected import path
-import selfDrivingCarLogo from '../../Assets/self-driving-car-demo.png';
+import ProjectCard from "./ProjectCards";
+import EmartApp from '../../Assets/emart.png';
+import PortfolioImage from '../../Assets/portfolio.png';
+import VprofileImage from '../../Assets/Vprofile.png';
 
 function Projects() {
   return (
@@ -14,14 +16,36 @@ function Projects() {
           Here are a few projects I've worked on recently.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          {/* Project 1 - EMart */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={selfDrivingCarLogo}
+              imgPath={EmartApp}
               isBlog={false}
-              title="Self-Driving Car"
-              description="A self-driving car that works with a neural network from scratch."
-              ghLink="https://github.com/1md3nd/portfolio/tree/main/Frontend/Portfolio/src/components/SelfDrivingCar"
-              demoLink="/selfdrivingcar"
+              title="EMart Microservices App"
+              description="Full-stack e-commerce deployed on AWS with Docker, Kubernetes, Nginx API Gateway, and CI/CD pipeline."
+              technologies={"Angular, Node.js, Java, AWS, Docker, Kubernetes"}
+            />
+          </Col>
+
+          {/* Project 2 - Portfolio */}
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={PortfolioImage}
+              isBlog={false}
+              title="Cloud Portfolio Website"
+              description="Personal portfolio hosted using AWS S3, CloudFront, Route53, and automated CI/CD using GitHub Actions."
+              technologies={"React, AWS S3, CloudFront, Route53, GitHub Actions"}
+            />
+          </Col>
+
+          {/* Project 3 - VprofileApp Automation */}
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={VprofileImage}
+              isBlog={false}
+              title="Cloud Hosted Profile Portal"
+              description="Build using Lift & Shift approach, migrated traditional on-premises application to AWS, ensuring high availability, scalability and security."
+              technologies={"Jenkins • GitHub • Maven • SonarQube • Checkstyle • Nexus • Slack • AWS EC2"}
             />
           </Col>
         </Row>

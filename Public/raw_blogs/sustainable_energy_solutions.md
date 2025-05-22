@@ -1,5 +1,5 @@
 ---
-author: Anurag Ranjan
+author: Rakesh Singh
 headerImage: https://picsum.photos/426
 id: sustainable_energy_solutions
 time: 17 01 2025

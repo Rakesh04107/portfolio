@@ -4,12 +4,11 @@ import Button from "react-bootstrap/Button";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 
-
-const branch = process.env.REACT_APP_BRANCH || 'main';
-
-const pdf = `https://raw.githubusercontent.com/1md3nd/portfolio/refs/heads/${branch}/Public/resume/out/default.pdf`;
-
+// PDF.js worker
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
+//  Updated to local file inside public/files/
+const pdf = "/files/Rakesh_singh_DevOps_Engineer.pdf";
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
@@ -22,6 +21,7 @@ function ResumeNew() {
     <div>
       <Container fluid className="resume-section">
         <Container style={{ position: "relative" }}>
+          {/* Top Download Button */}
           <Row style={{ justifyContent: "center", position: "relative" }}>
             <Button
               variant="primary"
@@ -34,12 +34,14 @@ function ResumeNew() {
             </Button>
           </Row>
 
+          {/* Resume Preview */}
           <Row className="resume">
             <Document file={pdf} className="d-flex justify-content-center">
               <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
             </Document>
           </Row>
 
+          {/* Bottom Download Button */}
           <Row style={{ justifyContent: "center", position: "relative" }}>
             <Button
               variant="primary"

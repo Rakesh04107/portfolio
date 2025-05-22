@@ -11,16 +11,16 @@ function Github() {
         paddingBottom: "50px",
       }}
     >
-      <h1 className="project-heading" style={{ paddingBottom: "20px" }}>
-        Days I <strong style={{ color: "var(--clr-primary-a20)" }}>Code</strong>
-      </h1>
-      <GitHubCalendar
-        username="1md3nd"
-        blockSize={15}
-        blockMargin={5}
-        color="var(--imp-text-color)" // Updated to CSS variable
-        fontSize={16}
-      />
+      {/* <h1 className="project-heading" style={{ paddingBottom: "20px" }}> */}
+        {/* Days I <strong style={{ color: "var(--clr-primary-a20)" }}>Code</strong> */}
+      {/* </h1> */}
+      {/* <GitHubCalendar */}
+        {/* username="1md3nd" */}
+        {/* blockSize={15} */}
+        {/* blockMargin={5} */}
+        {/* color="var(--imp-text-color)" // Updated to CSS variable */}
+        {/* fontSize={16} */}
+      {/* /> */}
     </Row>
   );
 }

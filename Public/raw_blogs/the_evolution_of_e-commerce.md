@@ -1,5 +1,5 @@
 ---
-author: Anurag Ranjan
+author: Rakesh Singh
 headerImage: https://picsum.photos/377
 id: the_evolution_of_e-commerce
 time: 17 01 2025

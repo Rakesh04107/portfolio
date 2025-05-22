@@ -1,5 +1,5 @@
 ---
-author: Anurag Ranjan
+author: Rakesh Singh
 headerImage: https://picsum.photos/972
 id: the_art_of_mindfulness
 time: 17 01 2025

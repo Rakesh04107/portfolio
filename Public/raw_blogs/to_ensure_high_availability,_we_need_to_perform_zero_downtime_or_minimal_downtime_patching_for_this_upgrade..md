@@ -1,5 +1,5 @@
 ---
-author: Anurag Ranjan
+author: Rakesh Singh
 headerImage: https://picsum.photos/128
 id: to_ensure_high_availability,_we_need_to_perform_zero_downtime_or_minimal_downtime_patching_for_this_upgrade.
 time: 17 01 2025

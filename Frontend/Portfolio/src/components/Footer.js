@@ -18,7 +18,7 @@ function Footer() {
     >
       <Row>
         <Col md="4" className="footer-copywright">
-          <h3>Designed and Developed by Anurag Ranjan </h3>
+          <h3>Designed and Developed by Rakesh singh </h3>
         </Col>
         <Col md="4" className="footer-copywright">
           <h3>Copyright © {year} AR</h3>

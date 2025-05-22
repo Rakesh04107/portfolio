@@ -1,5 +1,5 @@
 ---
-author: Anurag Ranjan
+author: Rakesh Singh
 headerImage: https://picsum.photos/342
 id: helm_chart_demo
 time: 18 01 2025

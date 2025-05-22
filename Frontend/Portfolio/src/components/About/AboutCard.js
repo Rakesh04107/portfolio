@@ -8,18 +8,18 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            Hi Everyone, I am <span className="purple">Anurag Ranjan </span>
-            from <span className="purple">Delhi, India.</span>
-            <br />I am currently working as a DevOps Trainee Engineer at{" "}
-            <span className="purple">Impressico Business Solutions</span>.
-            <br />I hold a B.Tech degree in Information Technology from{" "}
-            <span className="purple">KIET Group of Institutions </span>
-            with a CGPA of 8.14.
+            Hi Everyone, I am <span className="purple">RAKESH SINGH </span>
+            from <span className="purple">Faridabad, India.</span>
+            <br />I’m a Cloud & DevOps Engineer with 3+ years in IT infrastructure and automation{" "}
+            <span className="purple">Wipro technologies</span>.
+            <br />I hold a Masters degree in Bussiness Administrator from{" "}
+            <span className="purple"> J.C. Bose University of Science and Technology, YMCA </span>
+            with a CGPA of 7.4.
             <br />
             <br />
             I am passionate about cloud technologies, infrastructure as code,
-            and CI/CD pipelines. I have hands-on experience with tools like AWS,
-            Docker, and Kubernetes.
+            and CI/CD pipelines. I work with AWS, Docker, Kubernetes,
+            CI/CD, and IAC to deliver scalable solutions.
             <br />
             Additionally, I have a keen interest in software development and
             artificial intelligence, where I explore building scalable
@@ -31,13 +31,7 @@ function AboutCard() {
           </p>
           <ul>
             <li className="about-activity">
-              <ImPointRight /> Solving coding challenges on LeetCode
-            </li>
-            <li className="about-activity">
               <ImPointRight /> Exploring new DevOps tools and technologies
-            </li>
-            <li className="about-activity">
-              <ImPointRight /> Participating in tech meetups and hackathons
             </li>
             <li className="about-activity">
               <ImPointRight /> Experimenting with AI models and frameworks
@@ -47,7 +41,7 @@ function AboutCard() {
           <p style={{ color: "var(--clr-primary-a40)" }}>
             Code like an artist, think like a scientist, and dream like a child.{" "}
           </p>
-          <footer className="blockquote-footer">Anurag Ranjan</footer>
+          <footer className="blockquote-footer">Rakesh Singh</footer>
         </blockquote>
       </Card.Body>
     </Card>

@@ -1,7 +1,6 @@
 \documentclass[letterpaper,10pt]{article}
 
 % Dependencies
-% NOTE: Some packages (lastpage, hyperref) require second build!
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -49,59 +48,59 @@
 
 % Custom Commands
 \newcommand{\documentTitle}[2]{
-  \begin{center}
-    {\Huge\color{accentTitle} #1}
-    \vspace{10pt}
-    {\color{accentLine} \hrule}
-    \vspace{2pt}
-    \footnotesize{#2}
-    \vspace{2pt}
-    {\color{accentLine} \hrule}
-  \end{center}
+\begin{center}
+{\Huge\color{accentTitle} #1}
+\vspace{10pt}
+{\color{accentLine} \hrule}
+\vspace{2pt}
+\footnotesize{#2}
+\vspace{2pt}
+{\color{accentLine} \hrule}
+\end{center}
 }
 
 \newcommand{\documentFooter}[1]{
-  \setlength{\footskip}{10.25pt}
-  \fancyfoot[C]{\footnotesize #1}
+\setlength{\footskip}{10.25pt}
+\fancyfoot[C]{\footnotesize #1}
 }
 
 \newcommand{\numberedPages}{
-  \documentFooter{\thepage/\pageref{LastPage}}
+\documentFooter{\thepage/\pageref{LastPage}}
 }
 
 \titleformat{\section}{
-  \vspace{-5pt}
-  \color{accentText}
-  \raggedright\large\bfseries
+\vspace{-5pt}
+\color{accentText}
+\raggedright\large\bfseries
 }{}{0em}{}[\color{accentLine}\titlerule]
 
 \newcommand{\tinysection}[1]{
-  \phantomsection
-  \addcontentsline{toc}{section}{#1}
-  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+\phantomsection
+\addcontentsline{toc}{section}{#1}
+{\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
 }
 
 \newcommand{\heading}[2]{
-  \hspace{10pt}#1\hfill#2\\
+\hspace{10pt}#1\hfill#2\
 }
 
 \newcommand{\headingBf}[2]{
-  \heading{\textbf{#1}}{\textbf{#2}}
+\heading{\textbf{#1}}{\textbf{#2}}
 }
 
 \newcommand{\headingIt}[2]{
-  \heading{\textit{#1}}{\textit{#2}}
+\heading{\textit{#1}}{\textit{#2}}
 }
 
 \newenvironment{resume_list}{
-  \vspace{-7pt}
-  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+\vspace{-7pt}
+\begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
 }{
-  \end{itemize}
+\end{itemize}
 }
 
 \newcommand{\itemTitle}[1]{
-  \item[] \underline{#1}\vspace{4pt}
+\item[] \underline{#1}\vspace{4pt}
 }
 
 \renewcommand\labelitemi{--}
@@ -109,99 +108,68 @@
 \begin{document}
 
 % Heading
-\documentTitle{\href{https://1md3nd.com}{Anurag Ranjan}}{
-    \href{tel:+918630004742}{\raisebox{-0.15\height} \faMobile\ +91 8630004742} ~ | ~
-    \href{mailto:anurag.ranjan@impressico.com}{\raisebox{-0.15\height} \faEnvelope\ anurag.botmaster@outlook.com} ~ | ~
-    \href{https://linkedin.com/in/1md3nd}{\raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/1md3nd} ~ | ~
-    \href{https://github.com/1md3nd}{\raisebox{-0.15\height} \faGithub\ github.com/1md3nd} 
+\documentTitle{\href{https://rakeshinfo.xyz}{Rakesh Singh}}{
+\href{tel:+919899447166}{\raisebox{-0.15\height} \faMobile\ +91 9899447166} ~ | ~
+\href{mailto:singh.rakesh04107@gmail.com}{\raisebox{-0.15\height} \faEnvelope\ singh.rakesh04107@gmail.com} ~ | ~
+\href{https://linkedin.com/in/Rakesh04107}{\raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/Rakesh04107} ~ | ~
+\href{https://github.com/Rakesh04107}{\raisebox{-0.15\height} \faGithub\ github.com/Rakesh04107}
 }
 
-
-% Education (Position 1)
 \section{Education}
+\headingBf{MBA - Marketing \ International Business}{2012 -- 2014}
+\headingIt{Dr. MGR University, Chennai}{}
+\headingBf{B.Tech - Information Technology}{2007 -- 2011}
+\headingIt{Anna University, Chennai}{}
 
-\headingBf{KIET Group of Institutions}{2019 -- 2023}
-\headingIt{Bachelor of Technology in Information Technology}{CGPA: 8.14}
-
-% Work (Position 2)
-\section{Work}
-
-\headingBf{ \href{https://www.impressico.com}{Impressico Business Solutions}}{Jan 2024 -- Present}  
-\headingIt{DevOps Trainee Engineer}{}
-\begin{resume_list}  
-  \item \textbf{Tech Stack:} AWS, Terraform, CloudFormation, Jenkins, Docker, Kubernetes, Prometheus, Grafana
-  \item Engineered \textbf{\color{accentTitle}{CI/CD pipelines}} to streamline deployments and accelerate releases.
-  \item Automated \textbf{\color{accentTitle}{infrastructure provisioning}} with Terraform \& CloudFormation, reducing manual intervention.
-  \item Deployed \textbf{\color{accentTitle}{monitoring solutions}} with Prometheus and Grafana for high availability.
-  \item Collaborated with teams to quickly \textbf{\color{accentTitle}{diagnose and resolve}} deployment issues.
-  \item Conducted RCA to implement \textbf{\color{accentTitle}{proactive measures}} and boost system stability.
-\end{resume_list}
-
-\headingBf{\href{https://www.healthcart.com}{HealthKart}}{Jan 2023 -- July 2023} 
-\headingIt{Software Development Engineer Intern \href{https://drive.google.com/file/d/1Iz83NKtrG7A1KG_rK0P8s_sAquzRm_OY/view?usp=sharing}{\small\textit{\color{gray}{Link}}}}{}
+\section{Experience}
+\headingBf{IT Support Specialist / Windows SysAdmin}{2016 -- 2023}
+\headingIt{XYZ Company}{India}
 \begin{resume_list}
-  \item \textbf{Tech Stack:} Node.js, Express, RESTful APIs, Postman
-  \item Developed and rigorously tested \textbf{\color{accentTitle}{RESTful APIs}} to improve backend performance.
-  \item Collaborated in agile teams to \textbf{\color{accentTitle}{debug and resolve}} critical issues.
-  \item Participated in code reviews to uphold coding standards.
+\item Handled incident, service request, and change management for 200+ users.
+\item Managed Windows Server environments, AD, Group Policy, DHCP, DNS, etc.
+\item Automated routine tasks using PowerShell and batch scripts.
 \end{resume_list}
 
-% Skills (Position 3)
+\headingBf{DevOps Trainee | Cloud Enthusiast}{2023 -- Present}
+\headingIt{Self Projects + Training}{Remote}
+\begin{resume_list}
+\item Designed CI/CD pipelines using Jenkins, GitHub Actions, and Git.
+\item Deployed microservices e-commerce app on AWS using Docker, Kubernetes.
+\item Automated infra with Ansible and Terraform.
+\item Built serverless portfolio site with S3, CloudFront, Lambda, API Gateway.
+\end{resume_list}
+
 \section{Skills}
 \begin{multicols}{2}
-  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
-    \item[\textbf{Programming}] Python, Shell Scripting, Node.js
-    \item[\textbf{Cloud}] AWS, CloudFormation
-    \item[\textbf{DevOps}] Jenkins, Prometheus, Grafana
-    \item[\textbf{Containers}] Docker, Kubernetes
-    \item[\textbf{Databases}] MySQL, MongoDB, Elasticsearch
-    \item[\textbf{Tools}] Terraform, Ansible
-  \end{itemize}
+\begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
+\item[\textbf{Cloud}] AWS (EC2, S3, RDS, Lambda, IAM)
+\item[\textbf{DevOps}] Docker, Kubernetes, Jenkins, GitHub Actions
+\item[\textbf{IaC}] Terraform, Ansible, CloudFormation
+\item[\textbf{Scripting}] Bash, PowerShell, Python
+\item[\textbf{Monitoring}] CloudWatch, Prometheus, Grafana
+\item[\textbf{Others}] Git, Nginx, Linux, Windows
+\end{itemize}
 \end{multicols}
 
-% Projects (Position 4)
 \section{Projects}
-
-\headingBf{Kubernetes The Hard Way \href{https://github.com/1md3nd/kubernetes}{\small\textit{\color{gray}{Link}}}}{}
+\headingBf{EMart - Microservices E-Commerce}{\href{https://github.com/Rakesh04107/EMart-App}{\small\textit{Link}}}
 \begin{resume_list}
-  \item \textbf{Tech Stack:} Kubernetes, Shell scripting, Virtual Machine 
-  \item Architected and deployed Kubernetes clusters from cratch, adhering to industry best practices.
-  \item Gained advanced expertise in \textbf{\color{accentTitle}{cluster management, scaling, and security configurations}}.
+\item Built Angular frontend, Node.js and Java microservices with MongoDB and MySQL.
+\item Containerized with Docker and orchestrated using Kubernetes.
+\item CI/CD via Jenkins and GitHub Actions. Hosted on AWS EC2.
 \end{resume_list}
 
-\headingBf{Serverless Full-Stack Portfolio with Automated DevOps Lifecycle \href{https://github.com/1md3nd/portfolio}{\small\textit{\color{gray}{Link}}}}{}
+\headingBf{Portfolio Website (Serverless)}{\href{https://github.com/Rakesh04107/portfolio}{\small\textit{Link}}}
 \begin{resume_list}
-  \item \textbf{Tech Stack:} AWS (S3, CloudFront, Lambda, API Gateway, DynamoDB), React.js, GitHub Actions, CloudFormation 
-  \item Architected and deployed a dynamic, serverless portfolio website ensuring high scalability and \textbf{\color{accentTitle}{99.99\% uptime}}.
-  \item Developed a CI/CD pipeline with GitHub Actions and CloudFormation, reducing deployment time by \textbf{\color{accentTitle}{50\%}}.
-  \item Built a responsive React.js front-end to enhance user engagement and performance.
-  \item Optimized infrastructure costs and performance using AWS best practices.
+\item Created responsive React-based portfolio with image thumbnails and animations.
+\item Hosted via AWS S3 and CloudFront. Backend with Lambda + DynamoDB.
+\item Automated CI/CD with GitHub Actions.
 \end{resume_list}
 
-% Achievements (Position 5)
-\section{Achievements}
-\headingBf{KIET Codechef Chapter Executive Member}{}
-\begin{resume_list}
-  \item Organized and managed coding events, boosting competitive programming participation.
-\end{resume_list}
-
-\headingBf{Leetcode Success \href{https://www.leetcode.com/1md3nd}{\small\textit{\color{gray}{Link}}}}{}
-\begin{resume_list}
-  \item \textbf{\color{accentTitle}{Solved over 700 algorithm problems}}, demonstrating strong problem solving skills and dedication.
-\end{resume_list}
-
-\headingBf{Postman API Student Expert}{}
-\begin{resume_list}
-  \item Recognized for excellence in \textbf{\color{accentTitle}{API design, testing, and automation}} using Postman.
-\end{resume_list}
-
-% Certifications (Bottom)
 \section{Certifications}
-\begin{resume_list}  
-  \item \headingBf{\href{https://www.coursera.org/account/accomplishments/verify/VAXY9EEWXD3C}{Introduction to Git and GitHub}}{}
-  \item \headingBf{\href{https://www.coursera.org/account/accomplishments/verify/MEHYBBVAYE8E}{Data Structures and Performance}}{}
-  \item \headingBf{\href{https://www.coursera.org/account/accomplishments/verify/R73VUS4L44RN}{Palo Alto Networks Academy Cybersecurity Foundation}}{}
-  \item \headingBf{\href{https://drive.google.com/file/d/15n4G1_3d75gbxfikhzodotRZVXInxqhJ/view?usp=sharing}{CCNAv7: Introduction to Networks}}{}
+\begin{resume_list}\item AWS Cloud Solutions Architect (2024)
+\item DevOps Beginners to Advanced with Projects - Udemy
+\item Git, GitHub, Terraform, Jenkins courses - Coursera/Udemy
 \end{resume_list}
 
 \end{document}

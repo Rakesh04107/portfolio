@@ -28,17 +28,17 @@ function Leetcode() {
         paddingBottom: "50px",
       }}
     >
-      <h1 className="project-heading" style={{ paddingBottom: "20px" }}>
-        Days I <strong className="purple">Code </strong>Leetcode
-      </h1>
-      <LeetCodeCalendar
-        username="1md3nd"
-        blockSize={15}
-        blockMargin={5}
-        fontSize={15}
-        theme={exampleTheme}
-        style={{ borderRadius: "8px", overflow: "hidden", width: "auto" }}
-      />
+      {/* <h1 className="project-heading" style={{ paddingBottom: "20px" }}> */}
+        {/* Days I <strong className="purple">Code </strong>Leetcode */}
+      {/* </h1> */}
+      {/* <LeetCodeCalendar */}
+        {/* username="1md3nd" */}
+        {/* blockSize={15} */}
+        {/* blockMargin={5} */}
+        {/* fontSize={15} */}
+        {/* theme={exampleTheme} */}
+        {/* style={{ borderRadius: "8px", overflow: "hidden", width: "auto" }} */}
+      {/* /> */}
     </Row>
   );
 }
