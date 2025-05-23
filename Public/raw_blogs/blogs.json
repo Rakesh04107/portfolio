@@ -4,7 +4,7 @@
         "author": "Rakesh Singh",
         "id": "test_blog",
         "headerImage": "https://picsum.photos/346",
-        "time": "17 01 2025"
+        "time": "17 02 2025"
     },
     {
         "title": "Helm Chart Demo",
@@ -18,28 +18,28 @@
         "author": "Tony Stark",
         "id": "the_impact_of_social_media_on_society",
         "headerImage": "https://picsum.photos/379",
-        "time": "January 12, 2025"
+        "time": "March 12, 2025"
     },
     {
         "title": "The Rise of Serverless Computing",
         "author": "John Doe",
         "id": "the_rise_of_serverless_computing",
         "headerImage": "https://picsum.photos/200",
-        "time": "January 14, 2025"
+        "time": "Feburary 14, 2025"
     },
     {
         "title": "Untitled Blog",
         "author": "Rakesh Singh",
         "id": "untitled_blog",
         "headerImage": "https://picsum.photos/462",
-        "time": "17 01 2025"
+        "time": "17 02 2025"
     },
     {
         "title": "Introduction to Quantum Computing",
         "author": "James Bond",
         "id": "introduction_to_quantum_computing",
         "headerImage": "https://picsum.photos/737",
-        "time": "January 12, 2025"
+        "time": "April 12, 2025"
     },
     {
         "title": "To ensure high availability, we need to perform zero downtime or minimal downtime patching for this upgrade.",
