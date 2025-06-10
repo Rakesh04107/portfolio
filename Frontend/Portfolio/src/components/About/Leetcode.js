@@ -1,8 +1,8 @@
 import React from "react";
-import LeetCodeCalendar from "leetcode-calendar";
+//import LeetCodeCalendar from "leetcode-calendar";
 import { Row } from "react-bootstrap";
 
-function Leetcode() {
+// function Leetcode() {
   const exampleTheme = {
     light: [
       "rgba(235, 235, 235, 0.5)", // Light background color
