@@ -11,6 +11,19 @@ import {
 } from "react-icons/si";
 
 function Techstack() {
+  const skills = [
+    { icon: <FaAws />, name: "AWS" },
+    { icon: <SiKubernetes />, name: "Kubernetes" },
+    { icon: <DiDocker />, name: "Docker" },
+    { icon: <SiPrometheus />, name: "Prometheus" },
+    { icon: <SiGrafana />, name: "Grafana" },
+    { icon: <SiMysql />, name: "MySQL" },
+    { icon: <SiElasticsearch />, name: "Elasticsearch" },
+    { icon: <DiNodejs />, name: "Node.js" },
+    { icon: <DiPython />, name: "Python" },
+    { icon: <DiGit />, name: "Git" },
+  ];
+
   return (
     <Row
       style={{
@@ -19,36 +32,14 @@ function Techstack() {
         paddingBottom: "50px",
       }}
     >
-      <Col xs={4} md={2} className="tech-icons">
-        <FaAws />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiKubernetes />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiDocker />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiPrometheus />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiGrafana />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiMysql />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiElasticsearch />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiNodejs />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiPython />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiGit />
-      </Col>
+      {skills.map((skill, index) => (
+        <Col xs={4} md={2} className="tech-icons" key={index}>
+          <div className="icon-wrapper">
+            {skill.icon}
+            <p className="icon-label">{skill.name}</p>
+          </div>
+        </Col>
+      ))}
     </Row>
   );
 }

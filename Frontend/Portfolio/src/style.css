@@ -691,6 +691,15 @@ body.dark-theme {
   transition: all 0.4s ease 0s !important;
 }
 
+.icon-label {
+  font-size: 0.75rem; /* smaller font size */
+  color: #ccc;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500; /* optional: for balanced thickness */
+}
+
+
 @media (max-width: 767px) {
   .tech-icons {
     margin: 10px !important;
@@ -706,6 +715,14 @@ body.dark-theme {
   padding: 20px !important;
   line-height: 1.6 !important;
 }
+
+.icon-label {
+  font-size: 0.75rem;
+  color: #ccc;
+  margin-top: 8px;
+  text-align: center;
+}
+
 
 .quote-card-view {
   border: none !important;

@@ -42,7 +42,7 @@ def add_missing_metadata(file_data, missing_key):
     elif missing_key == "time":
         file_data[missing_key] = datetime.now().strftime("%d %m %Y")
     elif missing_key == "author":
-        file_data[missing_key] = "Anurag Ranjan"
+        file_data[missing_key] = "Rakesh Singh"
     elif missing_key == "title":
         first_line = file_data.content.splitlines()[0] if file_data.content else "Untitled Blog"
         file_data[missing_key] = first_line.strip("#").strip(" ")

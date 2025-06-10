@@ -13,19 +13,34 @@ function Toolstack() {
       }}
     >
       <Col xs={4} md={2} className="tech-icons">
-        <SiLinux />
+        <div className="tech-icon-wrapper">
+          <SiLinux />
+          <div className="icon-label">Linux</div>
+        </div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiJenkins />
+        <div className="tech-icon-wrapper">
+          <SiJenkins />
+          <div className="icon-label">Jenkins</div>
+        </div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiDocker />
+        <div className="tech-icon-wrapper">
+          <SiDocker />
+          <div className="icon-label">Docker</div>
+        </div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiPostman />
+        <div className="tech-icon-wrapper">
+          <SiPostman />
+          <div className="icon-label">Postman</div>
+        </div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <DiVisualstudio />
+        <div className="tech-icon-wrapper">
+          <DiVisualstudio />
+          <div className="icon-label">VS Code</div>
+        </div>
       </Col>
     </Row>
   );
