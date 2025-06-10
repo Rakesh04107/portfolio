@@ -1,9 +1,8 @@
 import React from "react";
+// import LeetCodeCalendar from "leetcode-calendar"; // ❌ Comment this
 import { Row } from "react-bootstrap";
 
-// import LeetCodeCalendar from "react-leetcode-calendar"; // ❌ Unused, so commented
-
-// const exampleTheme = { ... }; // ❌ Unused, so commented
+// const exampleTheme = { ... } // ❌ Also comment or remove this
 
 function Leetcode() {
   return (
@@ -14,7 +13,7 @@ function Leetcode() {
         paddingBottom: "50px",
       }}
     >
-      {/* Component temporarily disabled */}
+      {/* LeetCodeCalendar is temporarily disabled */}
     </Row>
   );
 }

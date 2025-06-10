@@ -1,7 +1,6 @@
 import React from "react";
 import { Row } from "react-bootstrap";
-
-// import GitHubCalendar from "react-github-calendar"; // ❌ Comment this out if not used
+// import GitHubCalendar from "react-github-calendar"; // ❌ Comment or delete this line
 
 function Github() {
   return (
@@ -11,9 +10,10 @@ function Github() {
         paddingBottom: "10px",
       }}
     >
-      {/* GitHubCalendar component is temporarily disabled */}
+      {/* GitHubCalendar is temporarily disabled */}
     </Row>
   );
 }
 
 export default Github;
+
